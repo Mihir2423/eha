@@ -29,8 +29,9 @@ const AddressForm = ({ setAdd }) => {
     email: "",
   };
 
-  const { data: session } = useSession();
   const onSubmit = async (values) => {
+    const { data: session } = useSession();
+
     console.log(values);
     try {
       const apiUrl = "http://localhost:1337/api/profile/me";

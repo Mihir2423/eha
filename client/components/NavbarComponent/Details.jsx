@@ -1,15 +1,15 @@
 import React from "react";
 
-import { Noto_Sans_Thai_Looped } from "next/font/google";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import { smallTypo } from "@/styles/typoStyles";
 import EditIcon from "@/assets/svg/editicon";
 
-const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import localFont from 'next/font/local'
+
+const nova_thai = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
 
 const Details = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");

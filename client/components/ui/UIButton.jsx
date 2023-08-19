@@ -1,13 +1,12 @@
 import { Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
-import { Noto_Sans_Thai_Looped } from "next/font/google";
+import localFont from 'next/font/local'
 
-const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+const nova_thai = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
 
 const UIButton = ({ title }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");

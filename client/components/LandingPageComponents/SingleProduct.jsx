@@ -10,14 +10,14 @@ import { useRouter } from "next/router";
 
 import styles from "./dealStyle.module.css";
 
-import { Noto_Sans_Thai_Looped } from "next/font/google";
 import { useCart } from "react-use-cart";
 
-const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import localFont from 'next/font/local'
+
+const nova_thai = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
 
 const SingleProduct = ({ item }) => {
   const { addItem } = useCart();
@@ -64,7 +64,7 @@ const SingleProduct = ({ item }) => {
         <Box className={`${styles.cartBtns}`}>
           <Box className={`flex justify-between items-center px-2`}>
             <Box
-              className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-8`}
+              className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-[8px]`}
               style={{
                 borderRadius: "5px",
               }}

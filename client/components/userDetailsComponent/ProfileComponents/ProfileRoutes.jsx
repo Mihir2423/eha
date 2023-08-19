@@ -17,8 +17,9 @@ const ProfileRoutes = ({ page }) => {
       style={{ boxShadow: "0px 0px 12px 1px #00000040" }}
     >
       {routeArray?.map((data, i) => (
-        <Link key={i} href={`${data.link}`}>
+        <Link href={`${data.link}`}>
           <Typography
+            key={i}
             variant="h3"
             className={
               data.name !== page

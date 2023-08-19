@@ -28,7 +28,8 @@ import CartMenu from "./CartMenu";
 import ProfileMenu from "./ProfileMenu";
 import { useSelector } from "react-redux";
 import img from "../../assets/png/pngwing 7.png";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from 'next-auth/react';
+
 
 const profile = [
   {
@@ -78,7 +79,7 @@ const Header = () => {
 
   React.useEffect(() => {
     if (session == null) return;
-    console.log("session.jwt", session.jwt);
+    console.log('session.jwt', session.jwt);
   }, [session]);
   const state = useSelector((state) => state?.user?.userDetails?.token);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -140,7 +141,6 @@ const Header = () => {
         ) : productsData.length !== 0 ? (
           productsData.map((item, i) => (
             <Box
-              key={i}
               className={`cursor-pointer flex gap-5 items-center border-b-[#c7c6c6] border-b-[2px] pb-3`}
               onClick={() => {
                 router.push(`/product/${item?.id}`);
@@ -225,7 +225,7 @@ const Header = () => {
           </Box>
           <Box className="w-1/2 flex gap-3 md:gap-0 justify-end md:justify-between items-center">
             {!isMobile && (
-              <Box className={`relative`}>
+              <Box className={`relative`} >
                 <OutlinedInput
                   classes={{
                     notchedOutline: styles.notchedOutline,

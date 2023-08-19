@@ -14,7 +14,7 @@ const nova_thai = Noto_Sans_Thai_Looped({
 
 const SmallTitle = ({ title, viewAll, id }) => {
   return (
-    <Box className={`my-4`} >
+    <Box className={`my-4 md:hidden`} >
       <Typography
         variant="p"
         className={`${nova_thai.className} text-[15px] text-[#494949]  `}

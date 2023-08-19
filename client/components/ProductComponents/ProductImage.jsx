@@ -49,7 +49,6 @@ const ProductImage = ({ data }) => {
             <Box className={`flex gap-[7px]`}>
               {data?.attributes?.image?.data?.map((_, i) => (
                 <Box
-                  key={i}
                   className={`w-[13px] h-[13px] rounded-full mt-2 ${
                     currImage === i ? `bg-[#F61C0D]` : `bg-[#818181]`
                   }`}

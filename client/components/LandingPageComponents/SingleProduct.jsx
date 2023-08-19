@@ -64,7 +64,7 @@ const SingleProduct = ({ item }) => {
         <Box className={`${styles.cartBtns}`}>
           <Box className={`flex justify-between items-center px-2`}>
             <Box
-              className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-8`}
+              className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-[8px]`}
               style={{
                 borderRadius: "5px",
               }}

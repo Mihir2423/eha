@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import SectionHeading from "../ProfileComponents/SectionHeading";
 import Image from "next/image";
-import noDataFound from "../../../assets/svg/noDataFound.svg";
+// import noDataFound from "../../../assets/svg/noDataFound.svg";
 const Orders = () => {
   let prods = true;
   return (
@@ -13,7 +13,7 @@ const Orders = () => {
       <SectionHeading title={"MY ORDERS"} />
       {prods ? (
         <Box className={`flex w-full justify-center items-center p-[119px]`}>
-          <Image src={noDataFound} alt="No Products Found" />
+          {/* <Image src={noDataFound} alt="No Products Found" /> */}
         </Box>
       ) : (
         <Box></Box>

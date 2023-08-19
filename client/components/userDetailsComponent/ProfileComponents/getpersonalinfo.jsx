@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 import { nova_thai_bold, nova_thai } from "@/utilities/font";
 import React from "react";
 import Image from "next/image";
-import noDataFound from "../../../assets/svg/noDataFound.svg";
+// import noDataFound from "../../../assets/svg/noDataFound.svg";
 import InfoForm from "./InfoForm";
 
 const InfoNotFound = ({ setTakeInput, takeInput }) => {
@@ -22,7 +22,7 @@ const InfoNotFound = ({ setTakeInput, takeInput }) => {
         <InfoForm setTakeInput={setTakeInput} takeInput={takeInput}/>
       ) : (
         <Box className={`grid justify-center items-center p-[119px]`}>
-          <Image src={noDataFound} alt="No Address Found" className="flex  justify-center items-center " />
+          {/* <Image src={noDataFound} alt="No Address Found" className="flex  justify-center items-center " /> */}
           <Box className="flex justify-center ">
             <Button
               type="button"

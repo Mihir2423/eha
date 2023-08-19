@@ -2,13 +2,12 @@ import { Box } from "@mui/material";
 import React, { useState } from "react";
 import CustomCategory from "./CustomCategory";
 
-import { Noto_Sans_Thai_Looped } from "next/font/google";
+import localFont from 'next/font/local'
 
-const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+const nova_thai = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
 
 const Categories = () => {
   const [monitorDropDown, setMonitorDropDown] = useState(false);

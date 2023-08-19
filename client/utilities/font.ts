@@ -1,23 +1,22 @@
-import { Nova_Slim, Noto_Sans_Thai_Looped } from "next/font/google";
 
-export const nova = Nova_Slim({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-export const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-export const nova_thai_semi_bold = Noto_Sans_Thai_Looped({
-  weight: ["500"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-export const nova_thai_bold = Noto_Sans_Thai_Looped({
-  weight: ["600"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+
+import localFont from 'next/font/local'
+
+export const nova_thai = localFont({
+  src: '../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
+export const nova_thai_semi_bold = localFont({
+  src: '../assets/fonts/NotoSansThaiLooped-SemiBold.ttf',
+  display: 'swap',
+})
+export const nova_thai_bold = localFont({
+  src: '../assets/fonts/NotoSansThaiLooped-Bold.ttf',
+  display: 'swap',
+})
+export const nova = localFont({
+  src: '../assets/fonts/NovaSlim-Regular.ttf',
+  display: 'swap',
+})
+
 

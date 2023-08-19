@@ -4,19 +4,18 @@ import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import starIcon from "../../assets/svg/star.svg";
 
-import { Noto_Sans_Thai_Looped } from "next/font/google";
 import Image from "next/image";
 
-const nova_thai = Noto_Sans_Thai_Looped({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-const nova_thai_600 = Noto_Sans_Thai_Looped({
-  weight: ["600"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import localFont from 'next/font/local'
+
+const nova_thai = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-Regular.ttf',
+  display: 'swap',
+})
+const nova_thai_600 = localFont({
+  src: '../../assets/fonts/NotoSansThaiLooped-SemiBold.ttf',
+  display: 'swap',
+})
 const AboutProduct = ({ data }) => {
   console.log(data);
   return (

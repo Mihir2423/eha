@@ -19,7 +19,10 @@ const play = Play({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--font-inter",
+  preload: false,
 });
+
+
 
 const AllProducts = ({ totalslides, data }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");

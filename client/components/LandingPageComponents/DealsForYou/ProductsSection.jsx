@@ -1,0 +1,35 @@
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import React from "react";
+import SectionTitle from "./SectionTitle";
+import AllProducts from "./AllProducts";
+import SmallTitle from "../SmallTitle";
+
+const ProductsSection = ({ posts }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isSmallMobile = useMediaQuery("(max-width: 568px)");
+  return (
+    <Box>
+      {isMobile ? <SmallTitle title={"DEALS FOR YOU"} /> : <SectionTitle />}
+      <Box
+        className={`bg-white mt-5 md:mt-0 relative rounded-[5px] md:rounded-none px-5 md:px-none pt-7 md:pt-0`}
+        style={{ boxShadow: isMobile && "0px 0px 7px 1px #00000040" }}
+      >
+        <AllProducts
+          data={posts?.data}
+          totalslides={isSmallMobile ? 1.7 : isMobile ? 2 : 4}
+        />
+        {isMobile && (
+          <Box
+            className={`bg-[#EA1D25] absolute w-[100px] flex items-center justify-center py-2 top-[-15px] left-1/2 -translate-x-1/2 `}
+          >
+            <Typography variant="span" className="text-white">
+              VIEW ALL
+            </Typography>
+          </Box>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+export default ProductsSection;

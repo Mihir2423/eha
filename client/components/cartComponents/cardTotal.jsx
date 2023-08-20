@@ -7,7 +7,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { nova, nova_thai } from '@/utilities/font';
 import { Box } from '@mui/material';
 
-function CardTotal({cartTotal,items}) {
+function CardTotal({cartTotal,items,nextStep,prevStep}) {
   return (
     <Card className={`${nova.className} md:fixed md:right-0 md:mr-[50px]`}>
       <CardContent className="p-0">
@@ -55,6 +55,7 @@ function CardTotal({cartTotal,items}) {
           color="primary"
           endIcon={<ArrowRightAltIcon />}
           className="w-full mt-4 p-3 rounded-md bg-green-600 hover:bg-green-700 text-lg px-4"
+          onClick={nextStep}
         >
           PROCEED
         </Button>

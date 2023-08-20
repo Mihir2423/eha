@@ -17,10 +17,11 @@ import Image from 'next/image';
 import SectionHeading from '../userDetailsComponent/ProfileComponents/SectionHeading';
 import { Container } from '@mui/material';
 import { useCart } from 'react-use-cart';
+import { useSession } from 'next-auth/react';
 
 
 
-export default function MediaControlCard() {
+export default function CartDetails({nextStep, prevStep}) {
   
   const { isEmpty, items, cartTotal, removeItem, updateItemQuantity } = useCart();
   let content;
@@ -83,7 +84,7 @@ export default function MediaControlCard() {
     </Card>
   ))}    
  </Box>
- {!isEmpty && <CardTotal className="fixed" cartTotal={cartTotal} items={items}/>}
+ {!isEmpty && <CardTotal className="fixed" cartTotal={cartTotal} items={items} nextStep={nextStep} prevStep={prevStep}/>}
     </Container>
   );
 }

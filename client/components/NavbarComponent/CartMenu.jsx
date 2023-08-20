@@ -5,6 +5,7 @@ import Link from "next/link";
 import { nova, nova_thai } from "@/utilities/font";
 import { useCart } from "react-use-cart";
 
+
 const CartMenu = ({ anchorEl, isCartOpen, handleCloseCart, products }) => {
   const { isEmpty, items, cartTotal, removeItem } = useCart();
   let content;
@@ -19,11 +20,11 @@ const CartMenu = ({ anchorEl, isCartOpen, handleCloseCart, products }) => {
           <Image
             src={item.img}
             alt={item.name}
-            width={40}
-            height={40}
-            className="w-[40px] h-[40px] object-cover rounded-md"
+            width={70}
+            height={70}
+            className="w-[40px] h-[40px] object-cover rounded-md m-1"
           />
-          <span className={`text-sm font-semibold ${nova_thai.className}`}>
+          <span className={`text-sm font-semibold ${nova_thai.className} m-1`}>
             {item.name}
           </span>
           <span
@@ -44,10 +45,6 @@ const CartMenu = ({ anchorEl, isCartOpen, handleCloseCart, products }) => {
         horizontal: "right",
       }}
       keepMounted
-      // transformOrigin={{
-      //   vertical: "left",
-      //   horizontal: "right",
-      // }}
       open={isCartOpen}
       onClose={handleCloseCart}
     >

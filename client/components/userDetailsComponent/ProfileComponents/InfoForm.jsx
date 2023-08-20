@@ -49,7 +49,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
     try {
       const response = await axios.request({
         method: userDetails ? "put" : "post",
-        url: "http://localhost:1337/api/profile/me",
+        url: `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`,
         data:payload,
         headers: {
           Authorization: `Bearer ${token}`,

@@ -7,6 +7,7 @@ import { getSession } from "next-auth/react";
 import Footer from "@/components/footer/footer";
 
 const Home = ({ posts, filteredItems }) => {
+  console.log(process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,18 +31,18 @@ const Home = ({ posts, filteredItems }) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  if (session == null) {
-    return {
-      redirect: {
-        destination: "/auth/login",
-        permanent: true,
-      },
-    };
-  }
+  // const session = await getSession(context);
+  // if (session == null) {
+  //   return {
+  //     redirect: {
+  //       destination: "/auth/login",
+  //       permanent: true,
+  //     },
+  //   };
+  // }
   try {
     const [postsRes, filteredItemsRes] = await Promise.all([
-      fetch("http://localhost:1337/api/products?populate=*"),
+      fetch(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/products?populate=*`),
       fetch("http://localhost:3000/api/products"),
     ]);
 

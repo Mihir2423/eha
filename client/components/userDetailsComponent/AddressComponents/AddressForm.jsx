@@ -33,7 +33,7 @@ const AddressForm = ({ setAdd }) => {
   const onSubmit = async (values) => {
     console.log(values);
     try {
-      const apiUrl = "http://localhost:1337/api/profile/me";
+      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`;
 
       const payload = {
         userAddress: {

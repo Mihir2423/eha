@@ -13,7 +13,7 @@ const ProductDetails = ({ product }) => {
   return (
     <>
       <Head>
-        <title>EHA | {product?.data.attributes?.name}</title>
+        <title>EHA | {product?.data?.attributes?.name}</title>
         <meta name="description" content="Get all electronics products" />
       </Head>
       <ProductDetail product={product} />
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
   try {
     const { id } = context.query;
     const res = await fetch(
-      `http://localhost:1337/api/products/${id}?populate=*`
+      `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/products/${id}?populate=*`
     );
     const product = await res.json();
     return {

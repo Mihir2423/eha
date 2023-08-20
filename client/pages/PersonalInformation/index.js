@@ -14,14 +14,14 @@ const Profile = () => {
   async function getProfile() {
     console.log("getProfile");
     // const token = window.localStorage.getItem("token");
-    const response = await axios.get(`http://localhost:1337/api/profile/me`
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`
           , {
             headers: {
               Authorization: `Bearer ${session?.jwt}`,
             },
           }
         ); 
-    console.log(response.data.data.attributes);
+    console.log(response.data.data?.attributes);
     dispatch(setDetails(response.data.data.attributes));
   };
   useEffect(() => {

@@ -21,6 +21,7 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             "websiteName": "YOUR_WEBSITE_NAME",
             "orderId": "ORDERID_98765",
             "callbackUrl": "https://localhost:1337/api/order/preTransaction",
+            // "callbackUrl": `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/order/preTransaction`,
             "txnAmount": {
                 "value": "1.00",
                 "currency": "INR",

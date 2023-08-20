@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
   try {
     const [postsRes, filteredItemsRes] = await Promise.all([
       fetch(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/products?populate=*`),
-      fetch("http://localhost:3000/api/products"),
+      fetch(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/products?populate=*`),
     ]);
 
     const posts = await postsRes.json();

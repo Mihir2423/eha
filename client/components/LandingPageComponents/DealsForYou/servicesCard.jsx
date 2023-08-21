@@ -14,7 +14,7 @@ const ServicesCard = () => {
   return (
     <Box className={`${styles.cardBgColor} ${nova_thai.className}`}>
       <Box>
-        <Typography variant="h3" className={styles.serviceCardTitle}>
+        <Typography variant="h3" className={`${nova_thai.className} ${styles.serviceCardTitle}`}>
           Looking For
         </Typography>
         <Typography variant="h3" className={styles.serviceCardTitle}>

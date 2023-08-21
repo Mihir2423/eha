@@ -137,12 +137,11 @@ const Header = () => {
         className={`absolute flex gap-8 flex-col w-full  bg-[#f1f1f1] z-10 shadow-md shadow-black py-[15px] px-[15px] rounded-b-[10px] max-h-[300px] overflow-y-scroll`}
       >
         {!productsData ? (
-          <Typography
-            variant="h4"
+          <h4
             className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
           >
             Searching...
-          </Typography>
+          </h4>
         ) : productsData.length !== 0 ? (
           productsData.map((item, i) => (
             <Box
@@ -159,21 +158,19 @@ const Header = () => {
                 height={38}
                 alt="product"
               />
-              <Typography
-                variant="h4"
+              <h4
                 className={` ${nova_thai.className} text-black text-[15px]`}
               >
                 {item?.attributes?.name}
-              </Typography>
+              </h4>
             </Box>
           ))
         ) : (
-          <Typography
-            variant="h4"
+          <h4
             className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
           >
             No Products Found
-          </Typography>
+          </h4>
         )}
       </Box>
     );

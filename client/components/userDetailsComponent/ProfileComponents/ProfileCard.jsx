@@ -14,19 +14,19 @@ const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
     >
       <Box className={`flex justify-center items-center p-4`}>
         <Box
-          className={`flex justify-center items-center rounded-[100%] bg-[#1B9AC2] px-10 py-6`}
+          className={`flex justify-center items-center rounded-[100%] bg-[#1B9AC2] px-10 py-5`}
         >
-          <Typography variant="h1" className={`text-white text-[64px]`}>
+          <h1 className={`text-white text-[64px]`}>
             {userDetails ? userDetails?.firstName[0]: "N"}
-          </Typography>
+          </h1>
         </Box>
       </Box>
-      <Typography variant="h4" className={`text-[25px]`}>
+      <h1 className={`text-[25px]`}>
         Hi, {userDetails ? userDetails?.firstName: "Not found"}
-      </Typography>
-      <Typography variant="p" className={`text-[14px] text-[#464646]`}>
+      </h1>
+      <p className={`text-[14px] text-[#464646]`}>
           {userDetails ? userDetails?.phoneNo: "Not Found"}
-      </Typography>
+      </p>
       {edit && !takeInput && (
         <Box
           className={`absolute top-[10px] right-[10px]`}

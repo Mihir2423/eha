@@ -20,9 +20,9 @@ const Title = ({ title, viewAll, id }) => {
     <Box className={`hidden md:flex justify-between items-center px-10 py-8`}>
       <Box className={`flex justify-start items-center gap-5`}>
         <Image alt="line" src={headingLine} />
-        <Typography variant="h4" className={styles.sectionTitle}>
+        <h4 className={`${styles.sectionTitle} ${nova_thai.className} `}>
           {title}
-        </Typography>
+        </h4>
       </Box>
       {viewAll && (
         <Box
@@ -30,11 +30,11 @@ const Title = ({ title, viewAll, id }) => {
           style={{ borderRadius: "5px" }}
           onClick={() => router.push(`/category?id=${id}`)}
         >
-          <Typography
-            className={`text-white normal-case text-base${nova_thai.className}`}
+          <h4
+            className={`text-white normal-case text-base marker ${nova_thai.className}`}
           >
             {"VIEW ALL"}
-          </Typography>
+          </h4>
         </Box>
       )}
     </Box>

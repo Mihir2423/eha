@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const PersonalInformation = () => {
   const dispatch = useDispatch();
   const [takeInput, setTakeInput] = React.useState(false);
-  const userDetails = useSelector((state) => state.user.userDetails.details);
+  const userDetails = useSelector((state) => state?.user?.userDetails?.details);
   return (
     <Grid container spacing={8} padding={3} paddingX={12}>
       <Grid item xs={3.4} md={3.4} xl={3.4}>

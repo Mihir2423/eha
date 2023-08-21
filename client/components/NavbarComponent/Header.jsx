@@ -13,7 +13,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import CartIcon from "../../assets/svg/Cart.svg";
 import ProfileIcon from "../../assets/svg/ProfileIcon.svg";
 import { mainTitle, smallTypo } from "@/styles/typoStyles";
-import { nova, nova_thai } from "@/utilities/font";
+import { nova_thai } from "@/utilities/font";
 import { useRouter } from "next/router";
 
 import styles from "../page.module.css";
@@ -29,6 +29,8 @@ import ProfileMenu from "./ProfileMenu";
 import { useSelector } from "react-redux";
 import img from "../../assets/png/pngwing 7.png";
 import { signOut, useSession } from "next-auth/react";
+
+import localFont from 'next/font/local'
 
 const profile = [
   {
@@ -71,6 +73,10 @@ const product = [
     image: img,
   },
 ];
+const nova = localFont({
+  src: '../../assets/fonts/NovaSlim-Regular.ttf',
+  display: 'swap',
+})
 
 const Header = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -218,7 +224,7 @@ const Header = () => {
               <Typography
                 variant="h1"
                 className={`text-white ${nova.className} text-[14px] leading-[19px]  md:text-[25px] md:leading-[32px] `}
-                // style={isMobile ? smallTypo : mainTitle}
+                style={isMobile ? smallTypo : mainTitle}
               >
                 EHA SHIVAM TECHNOLOGIES
               </Typography>

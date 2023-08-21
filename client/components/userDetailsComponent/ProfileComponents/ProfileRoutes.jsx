@@ -11,7 +11,6 @@ const ProfileRoutes = ({ page }) => {
     { name: "MY ORDERS", link: "MyOrders" },
     { name: "MANAGE ADDRESS", link: "ManageAddress" },
     { name: "CHANGE PASSWORD", link: "ChangePassword" },
-    { name: "SIGN OUT", link: "MyOrders" },
   ];
   const router = useRouter();
   return (
@@ -19,7 +18,7 @@ const ProfileRoutes = ({ page }) => {
       className={`${nova_thai.className} flex flex-col justify-center rounded-[8px] text-left overflow-hidden`}
       style={{ boxShadow: "0px 0px 12px 1px #00000040" }}
     >
-      {routeArray?.slice(0, -1)?.map((data, i) => (
+      {routeArray?.map((data, i) => (
         <Link key={i} href={`${data.link}`}>
           <h3
             className={

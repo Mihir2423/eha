@@ -375,3 +375,27 @@ body {
   width: 15px;
   height: 15px;
 }
+
+@font-face {
+  font-family: 'NovaThai';
+  src: url('../assets/fonts/NotoSansThaiLooped-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NovaThaiSemiBold';
+  src: url('../assets/fonts/NotoSansThaiLooped-SemiBold.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NovaThaiBold';
+  src: url('../assets/fonts/NotoSansThaiLooped-Bold.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nova';
+  src: url('../assets/fonts/NovaSlim-Regular.ttf');
+  font-display: swap;
+}

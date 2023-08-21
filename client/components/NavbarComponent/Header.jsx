@@ -151,6 +151,7 @@ const Header = () => {
                 src={item?.attributes?.thumbnail?.data?.attributes?.url}
                 width={38}
                 height={38}
+                alt="product"
               />
               <Typography
                 variant="h4"
@@ -216,8 +217,8 @@ const Header = () => {
             <Link href="/">
               <Typography
                 variant="h1"
-                className={`text-white ${nova.className} `}
-                style={isMobile ? smallTypo : mainTitle}
+                className={`text-white ${nova.className} text-[14px] leading-[19px]  md:text-[25px] md:leading-[32px] `}
+                // style={isMobile ? smallTypo : mainTitle}
               >
                 EHA SHIVAM TECHNOLOGIES
               </Typography>

@@ -2,11 +2,13 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import LoginImg from "../../assets/img-login.png";
-import { Alert, Container, Snackbar } from "@mui/material";
+import { Alert, Box, Container, Snackbar, useMediaQuery } from "@mui/material";
 import { nova, nova_thai } from "../../utilities/font";
 import Image from "next/image";
 import { useMutation, gql } from "@apollo/client";
 import { LOGIN, FORGOT_PASSWORD } from "../../gqloperation/mutation";
+import Background from "../background";
+
 
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -21,6 +23,7 @@ const Login = () => {
   const [success, setSuccess] = React.useState(false);
   const [loginUser, { loading, error, data }] = useMutation(LOGIN);
   const forgotPassword = useMutation(FORGOT_PASSWORD);
+  const isMobile=useMediaQuery("(max-width: 768px)");
   const initialValues = {
     identifier: "",
     password: "",
@@ -55,30 +58,34 @@ const Login = () => {
     } catch (error) {
       setError(error?.message);
     }
-  };
-
+  };  
+  
   return (
-    <Formik
+    <Formik 
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ handleSubmit }) => (
+      {({ handleSubmit }) => ( 
         <Form>
-          <div
-            className={`flex items-center mt-36 bg-white ${nova_thai.className}`}
-          >
-            <div className="flex-1 h-1/2 max-w-3xl mx-auto bg-white rounded-lg shadow-2xl">
+        <div
+        className={`flex items-center mt-36  ${nova_thai.className} mx-8 `}
+        
+      >
+            <div className="flex-1 h-1/2 max-w-3xl mx-auto bg-white rounded-lg shadow-2xl ">
               <div className="flex flex-col md:flex-row">
-                <div className="h-32 md:h-auto md:w-1/2">
+                
+                {isMobile?null:
+                  <div className="h-32 md:h-auto md:w-1/2">
                   <Image
-                    className="object-cover w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-                    src={LoginImg}
-                    alt="login"
-                    width={500}
-                    height={500}
-                  />
+                  className="object-cover w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+                  src={LoginImg}
+                  alt="login"
+                  width={500}
+                  height={500}
+                />
                 </div>
+                }
                 <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
                   <div className="w-full">
                     <div className="flex justify-between">

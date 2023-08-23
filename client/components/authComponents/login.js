@@ -69,14 +69,14 @@ const Login = () => {
       {({ handleSubmit }) => ( 
         <Form>
         <div
-        className={`flex items-center mt-36  ${nova_thai.className} mx-8 `}
+        className={`flex items-center mt-5 ${nova_thai.className} mx-0 md:w-[50vw] `}
         
       >
             <div className="flex-1 h-1/2 max-w-3xl mx-auto bg-white rounded-lg shadow-2xl ">
               <div className="flex flex-col md:flex-row">
                 
                 {isMobile?null:
-                  <div className="h-32 md:h-auto md:w-1/2">
+                  <div className="h-32 md:h-auto md:w-[40%]">
                   <Image
                   className="object-cover w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
                   src={LoginImg}
@@ -86,7 +86,7 @@ const Login = () => {
                 />
                 </div>
                 }
-                <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                <div className="flex items-center justify-center p-6 sm:p-12 md:w-[60%]">
                   <div className="w-full">
                     <div className="flex justify-between">
                       <h1

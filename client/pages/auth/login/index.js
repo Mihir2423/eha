@@ -20,7 +20,6 @@ const LoginPage = () => {
   }, [dispatch]);
   return (
     <>
-    <Background className="-z-50"/>
     <Login />
     
     </>

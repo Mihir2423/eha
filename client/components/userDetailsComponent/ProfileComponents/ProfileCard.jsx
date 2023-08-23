@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
+
   const userDetails = useSelector((state) => state.user.userDetails.details);
   return (
     <Box
@@ -14,7 +15,8 @@ const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
     >
       <Box className={`flex justify-center items-center p-4`}>
         <Box
-          className={`flex justify-center items-center rounded-[100%] bg-[#1B9AC2] px-10 py-5`}
+          className={`flex justify-center items-center rounded-[100%] bg-[#1B9AC2] md:px-10 md:py-6`}
+
         >
           <h1 className={`text-white text-[64px]`}>
             {userDetails ? userDetails?.firstName[0]: "N"}

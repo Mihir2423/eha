@@ -1,6 +1,8 @@
 import Login from "@/components/authComponents/login";
+import { Box, Container } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
+import Background from "@/components/background";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +19,14 @@ const LoginPage = () => {
   }, [dispatch]);
   return (
     <>
-      <Login />
+      {/* <Background className="-z-50"/> */}
+      <div
+        style={{ overflow: "hidden", transform: "translateY(-0px)" }}
+      >
+        <div className="loginBg flex items-center justify-center">
+          <Login />
+        </div>
+      </div>
     </>
   );
 };

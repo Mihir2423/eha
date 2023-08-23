@@ -1,6 +1,6 @@
 
 import React, { useReducer } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup"; // Import Yup for validation
@@ -11,6 +11,7 @@ import { nova_thai_bold,nova_thai } from "@/utilities/font";
 import { setDetails } from "@/redux/features/userSlice";
 
 const InfoForm = ({ setTakeInput, takeInput }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const userDetails = useSelector((state) => state.user.userDetails.details);
   const dispatch = useDispatch();
@@ -68,9 +69,9 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
       validationSchema={validationSchema}
     >
       {({ errors, touched, values }) => (
-        <Form className={`${nova_thai.className} text-left`}>
-            <Box className={`flex gap-20 flex-col`}>
-              <Box className={`flex w-full py-4 px-8 justify-between space-x-3`}>
+        <Form className={`${nova_thai.className} text-left m-4 rounded-md shadow-xl`}>
+            <Box className={`md:flex gap-20 flex-col`}>
+              <Box className={`md:flex w-full py-4 px-8 justify-between md:space-x-3`}>
                 <label className="block mt-4">
                   <span className="text-gray-700">First Name*</span>
                   <Field
@@ -92,7 +93,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
                     name="lastName"
                     type="text"
                     disabled={!takeInput}
-                    className="w-full px-1 my-4 border-b-2 focus:border-b-4 focus:outline-none opacity-80 text-neutral-700 text-sm font-normal"
+                    className="w-full md:px-1 md:my-4 border-b-2 focus:border-b-4 focus:outline-none opacity-80 text-neutral-700 text-sm font-normal"
                     placeholder="Enter your last name"
                   />
                   <ErrorMessage
@@ -118,7 +119,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
                 </label>
               </Box>
             </Box>
-            <Box className={`flex w-full py-4 px-8 justify-between`}>
+            <Box className={`md:flex  w-full py-4 px-8 justify-between`}>
               <label className="block mt-4">
                 <span className="text-gray-700">Phone No.</span>
                 <Field
@@ -165,7 +166,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
                 />
               </label>
             </Box>
-            <Box className={`flex w-full py-4 px-8 justify-between`}>
+            <Box className={`md:flex  w-full py-4 px-8 justify-between`}>
               <label className="block mt-4">
                 <span className="text-gray-700">Date of Birth*</span>
                 <Field

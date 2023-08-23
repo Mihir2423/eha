@@ -376,6 +376,13 @@ body {
   height: 15px;
 }
 
+.loginBg{
+  background-image: url('../assets//svg/ecomBackground.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 80vh;
+}
 @font-face {
   font-family: 'NovaThai';
   src: url('../assets/fonts/NotoSansThaiLooped-Regular.ttf');

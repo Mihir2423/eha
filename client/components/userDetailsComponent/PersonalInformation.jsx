@@ -13,7 +13,8 @@ const PersonalInformation = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const dispatch = useDispatch();
   const [takeInput, setTakeInput] = React.useState(false);
-  const userDetails = useSelector((state) => state.user.userDetails.details);
+
+  const userDetails = useSelector((state) => state?.user?.userDetails?.details);
 
   return (
     <Grid container  className="md:px-36 px-4 items-center justify-center md:justify-none">

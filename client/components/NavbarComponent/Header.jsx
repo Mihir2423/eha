@@ -13,7 +13,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import CartIcon from "../../assets/svg/Cart.svg";
 import ProfileIcon from "../../assets/svg/ProfileIcon.svg";
 import { mainTitle, smallTypo } from "@/styles/typoStyles";
-import { nova, nova_thai } from "@/utilities/font";
+import { nova_thai } from "@/utilities/font";
 import { useRouter } from "next/router";
 
 import styles from "../page.module.css";
@@ -29,6 +29,8 @@ import ProfileMenu from "./ProfileMenu";
 import { useSelector } from "react-redux";
 import img from "../../assets/png/pngwing 7.png";
 import { signOut, useSession } from "next-auth/react";
+
+import localFont from 'next/font/local'
 
 const profile = [
   {
@@ -71,6 +73,10 @@ const product = [
     image: img,
   },
 ];
+const nova = localFont({
+  src: '../../assets/fonts/NovaSlim-Regular.ttf',
+  display: 'swap',
+})
 
 const Header = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -131,12 +137,11 @@ const Header = () => {
         className={`absolute flex gap-8 flex-col w-full  bg-[#f1f1f1] z-10 shadow-md shadow-black py-[15px] px-[15px] rounded-b-[10px] max-h-[300px] overflow-y-scroll`}
       >
         {!productsData ? (
-          <Typography
-            variant="h4"
+          <h4
             className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
           >
             Searching...
-          </Typography>
+          </h4>
         ) : productsData.length !== 0 ? (
           productsData.map((item, i) => (
             <Box
@@ -151,22 +156,21 @@ const Header = () => {
                 src={item?.attributes?.thumbnail?.data?.attributes?.url}
                 width={38}
                 height={38}
+                alt="product"
               />
-              <Typography
-                variant="h4"
+              <h4
                 className={` ${nova_thai.className} text-black text-[15px]`}
               >
                 {item?.attributes?.name}
-              </Typography>
+              </h4>
             </Box>
           ))
         ) : (
-          <Typography
-            variant="h4"
+          <h4
             className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
           >
             No Products Found
-          </Typography>
+          </h4>
         )}
       </Box>
     );
@@ -216,7 +220,7 @@ const Header = () => {
             <Link href="/">
               <Typography
                 variant="h1"
-                className={`text-white ${nova.className} `}
+                className={`text-white ${nova.className} text-[14px] leading-[19px]  md:text-[25px] md:leading-[32px] `}
                 style={isMobile ? smallTypo : mainTitle}
               >
                 EHA SHIVAM TECHNOLOGIES

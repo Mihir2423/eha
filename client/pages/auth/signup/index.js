@@ -1,10 +1,17 @@
-import SignUp from "@/components/authComponents/signup";
+import Signup from "@/components/authComponents/signup";
 import React from "react";
 
 const SignUpPage = () => {
   return (
     <>
-      <SignUp />
+      {/* <Background className="-z-50"/> */}
+      <div
+        style={{ overflow: "hidden", transform: "translateY(-0px)" }}
+      >
+        <div className="loginBg flex items-center justify-center">
+          <Signup />
+        </div>
+      </div>
     </>
   );
 };

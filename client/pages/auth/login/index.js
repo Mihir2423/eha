@@ -21,9 +21,9 @@ const LoginPage = () => {
     <>
       {/* <Background className="-z-50"/> */}
       <div
-        style={{ overflow: "hidden", transform: "translateY(-0px)" }}
+        style={{ overflow: "hidden", transform: "translateY(-0px) " }}
       >
-        <div className="loginBg flex items-center justify-center">
+        <div className="loginBg flex items-center justify-center ">
           <Login />
         </div>
       </div>

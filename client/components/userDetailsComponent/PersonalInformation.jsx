@@ -23,7 +23,7 @@ const PersonalInformation = () => {
       <Grid item xs={8.6} md={8.6} xl={8.6} className="w-full bg-white flex items-center justify-center rounded-md">
         {
           userDetails ?
-          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput}/> 
+          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} className="bg-white"/> 
           :
            <InfoNotFound setTakeInput={setTakeInput}
            takeInput={takeInput}/>
@@ -39,6 +39,7 @@ const PersonalInformation = () => {
           edit={true}
           setTakeInput={setTakeInput}
           takeInput={takeInput}
+        
         />
         <ProfileRoutes page={"PERSONAL INFORMATION"} />
       </Box>

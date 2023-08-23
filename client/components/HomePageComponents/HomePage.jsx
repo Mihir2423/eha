@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const BannerSection = dynamic(() => import("./BannerSection"), {
   loading: () => <p>Loading...</p>,

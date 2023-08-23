@@ -10,7 +10,7 @@ const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
   const userDetails = useSelector((state) => state.user.userDetails.details);
   return (
     <Box
-      className={`${nova_thai.className} flex flex-col justify-center rounded-[8px] text-center py-6 pt-[2px] relative`}
+      className={`${nova_thai.className} flex flex-col justify-center rounded-[8px] text-center py-6 pt-[2px] relative bg-white`}
       style={{ boxShadow: "0px 0px 12px 1px #00000040" }}
     >
       <Box className={`flex justify-center items-center p-4`}>

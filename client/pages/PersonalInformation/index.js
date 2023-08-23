@@ -30,7 +30,13 @@ const Profile = () => {
   return (
 
     <Box className="mt-20">
+    <div
+        style={{ overflow: "hidden", transform: "translateY(-0px) " }}
+      >
+        <div className="loginBg ">
       <PersonalInformation userData={userData} />
+    </div>
+    </div>
     </Box>
   );
 };

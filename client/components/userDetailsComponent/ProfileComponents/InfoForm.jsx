@@ -69,7 +69,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
       validationSchema={validationSchema}
     >
       {({ errors, touched, values }) => (
-        <Form className={`${nova_thai.className} text-left m-4 rounded-md shadow-xl`}>
+        <Form className={`${nova_thai.className} text-left m-4 rounded-md shadow-2xl bg-white py-8`}>
             <Box className={`md:flex gap-20 flex-col`}>
               <Box className={`md:flex w-full py-4 px-8 justify-between md:space-x-3`}>
                 <label className="block mt-4">

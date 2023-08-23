@@ -4,6 +4,7 @@ import { nova_thai_bold, nova_thai } from "@/utilities/font";
 import React from "react";
 import Image from "next/image";
 import useMediaQuery from "@mui/material/useMediaQuery"; // Import useMediaQuery
+import InfoForm from "./InfoForm";
 
 const InfoNotFound = ({ setTakeInput, takeInput }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");

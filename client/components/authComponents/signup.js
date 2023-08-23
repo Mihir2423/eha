@@ -6,13 +6,14 @@ import Image from "next/image";
 import { useMutation } from "@apollo/client";
 import { SIGNUP } from "../../gqloperation/mutation";
 import SignImg from "../../assets/sign-img.jpg";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Snackbar, useMediaQuery } from "@mui/material";
 import { Router } from "next/router";
 import Link from "next/link";
 
 const Signup = () => {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const [signupUser, { loading }] = useMutation(SIGNUP);
   const initialValues = {
@@ -52,9 +53,10 @@ const Signup = () => {
     >
       {({ isSubmitting }) => (
         <Form>
-        <div className={`flex items-center mt-36 bg-white ${nova_thai.className}`}>
-        <div className="flex-1 h-1/2 max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl">
+        <div className={`flex items-center mt-5 ${nova_thai.className} mx-0 md:w-[50vw]`}>
+        <div className="flex-1 h-1/2 max-w-3xl mx-auto bg-white rounded-lg shadow-2xl ">
               <div className="flex flex-col md:flex-row">
+              {isMobile?null:
                 <div className="h-32 md:h-auto md:w-1/2">
                   <Image
                     className="object-fill w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
@@ -64,7 +66,8 @@ const Signup = () => {
                     height={500}
                   />
                 </div>
-                <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+              }  
+                <div className="flex items-center justify-center p-6 sm:p-12 md:w-[60%]">
                   <div className="w-full">
                     <div className="flex justify-between">
                       <h1 className={`mb-4 text-3xl font-black  text-black text-left ${nova_thai.className}`}>

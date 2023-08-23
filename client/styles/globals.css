@@ -378,8 +378,8 @@ body {
 
 .loginBg{
   background-image: url('../assets//svg/ecomBackground.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: fit;
+  background-repeat: repeat;
   background-position: center;
   min-height: 80vh;
 }

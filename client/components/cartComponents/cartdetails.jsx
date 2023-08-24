@@ -15,7 +15,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Image from 'next/image';
 import SectionHeading from '../userDetailsComponent/ProfileComponents/SectionHeading';
-import { Container } from '@mui/material';
+import { Container, useMediaQuery } from '@mui/material';
 import { useCart } from 'react-use-cart';
 import { useSession } from 'next-auth/react';
 
@@ -30,26 +30,27 @@ export default function CartDetails({nextStep, prevStep}) {
   const handleRemoveItem = (itemId) => {
     removeItem(itemId);
   };
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     
     <Container className="flex">
-    <Box className={`bg-white p-4 ${nova_thai.className} max-w-[900px] shadow-lg drop-rounded-lg`}>
-    <Typography className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 ">Order Summary</Typography>
+    <Box className={`bg-white px-4 pt-4 py-2 ${nova_thai.className}  shadow-lg drop-rounded-lg  border-2 rounded-lg max-w-[1250px]`}>
+    <Typography className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 pb-2 flex items-center ">Order Summary <Typography className='text-base ml-3'>({items.length} items)</Typography></Typography>
     
       {items.map((item) => (
         <Card sx={{ display: 'flex' }} className={`${nova_thai.className} shadow-none rounded-none`} key={item.id}>
     <Image
                         src={item.img}
                         alt={item.name}
-                        width={50}
+                        width={100}
                         height={50}
-                        className="object-fill rounded-md py-8 px-1 pl-3"
+                        className="object-fill rounded-md py-4"
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box className='md:flex-col md:w-[60%] '>
         <CardContent>
           <Typography component="div" variant="h8">
-         {item.name}
+         {item.name} 
           </Typography>
           <Typography component={'div'} variant="subtitle1" color="text.secondary" className='flex mt-3 ml-2 space-x-3' >
           <Typography className="text-black text-lg ">
@@ -64,9 +65,9 @@ export default function CartDetails({nextStep, prevStep}) {
           </Typography>
         </CardContent>
       </Box>
-      <Grid  className='md:flex-end md:align-center md:p-2 md:justify-end'> 
+      <Grid  className='md:flex-end md:align-center md:p-2 md:justify-end md:w-[30%]' > 
         <Box sx={{ display: 'flex'}} className="bg-red-200 rounded-md border-1 flex-end justify-end">
-            <IconButton aria-label="plus" className='p-2 border-2'  onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
+            <IconButton aria-label="plus" className='p-1 border-2 '  onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
                  <AddIcon />
             </IconButton>
             <div className="p-3 font-semibold border-2  bg-white">{item?.quantity}</div>

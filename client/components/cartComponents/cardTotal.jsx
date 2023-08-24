@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 
 function CardTotal({cartTotal,items,nextStep,prevStep}) {
   return (
-    <Card className={`${nova.className} md:fixed md:right-0 md:mr-[50px]`}>
+    <Card className={`${nova.className} md:fixed md:right-0 md:mr-[50px] md:m-[20px] md:w-[20%] md:h-[40%] `}>
       <CardContent className="p-0">
       <Box className="p-2">
         <Typography variant='h6' className="border-b-2 mb-2 mt-1">
@@ -52,9 +52,8 @@ function CardTotal({cartTotal,items,nextStep,prevStep}) {
         <Box className="px-4">
         <Button
           variant="contained"
-          color="primary"
           endIcon={<ArrowRightAltIcon />}
-          className="w-full mt-4 p-3 rounded-md bg-green-600 hover:bg-green-700 text-lg px-4"
+          className="w-full mt-6 p-4 rounded-md bg-green-600 hover:bg-green-700 text-lg px-4"
           onClick={nextStep}
         >
           PROCEED

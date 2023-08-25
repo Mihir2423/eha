@@ -4,59 +4,54 @@ import img4 from '../../assets/svg/New entries-bro 1.svg';
 import img3 from '../../assets/svg/Service 24_7-pana 1.svg';
 import img1 from '../../assets/svg/store-4156934_1280-removebg-preview 2.svg';
 import Image from 'next/image';
-import { nova_thai } from '../../utilities/font';
+import { nova,nova_thai } from '../../utilities/font';
+import { useMediaQuery } from "@mui/material"
 export default function CardsFooter() {
+    const isMobile = useMediaQuery("(max-width: 768px)");
     const card = [
-        {
-            title: "We provide genuine products from our authorized dealers.",
-            subtitle: "100% Trusted",
-            image: img1,
-            alt: "100% Trusted"
-        },
-        {
-            title: "Guaranteed Safe Delivery.",
-            subtitle: "Safe Delivery",
-            image: img2,
-            alt: "Safe Delivery"
-        },
-        {
-            title: "We are available 24/7 at your service.",
-            subtitle: "Fast Delivery",
-            image: img3,
-            alt: "24/7 Service"
-        },
-        {
-            title: "We ensure the fastest deliveries.",
-            subtitle: "Enquire",
-            image: img4,
-            alt: "Fast Delivery"
-        }
+      {
+        title: "We provide genuine products from our authorized dealers.",
+        subtitle: "100% Trusted",
+        image: img1,
+        alt: "100% Trusted",
+      },
+      {
+        title: "Guaranteed Safe Delivery.",
+        subtitle: "Safe Delivery",
+        image: img2,
+        alt: "Safe Delivery",
+      },
+      {
+        title: "We are available 24/7 at your service.",
+        subtitle: "Fast Delivery",
+        image: img3,
+        alt: "24/7 Service",
+      },
+      {
+        title: "We ensure the fastest deliveries.",
+        subtitle: "Enquire",
+        image: img4,
+        alt: "Fast Delivery",
+      },
     ];
-
+    
     return (
-        <div className="w-full flex-cols md:flex bg-white text-black md:space-x-4 md:justify-evenly justify-center space-x-10 md:px-0  border-t-2 border-b-2">
-            <div>
+      <div className="md:flex border-2 ">
+        {card.map((item, index) => {
+          return (
+            <div key={index} className={`${nova.className}  md:p-6 w-full md:w-[400px] h-auto text-center border-b-2 space-x-4 md:border-r-2 md:border-b-2`}>
+              <div className="flex flex-col bg-white px-3 py-1 md:h-[260px]">
+                <span className="flex items-center justify-center">
+                  <Image src={item.image} alt={item.alt} className="w-[123px] h-[123px] object-cover " />
+                </span>
+                <div className={`md:flex flex-col justify-between md:justify-center flex-grow ${nova_thai.className}`}>
+                  <p className="leading-relaxed text-xl">{item.subtitle}</p>
+                  <p className="md:text-sm text-base mt-2">{item.title}</p>
+                </div>
+              </div>
             </div>
-            {card.map((item, index) => {
-                return (
-
-                    <div key={index} className="p-6 w-[400px] h-[260px] text-center border-r-2 ">
-                        <div className="flex h-full bg-white px-3 py-1 flex-col">
-                            <span className="flex items-center mb-3 w-full justify-center ">
-                                <Image src={item.image} alt={item.alt} className='w-[123px] h-[123px] object-cover'  />
-                            </span>
-                            <div className={`flex flex-col justify-between flex-grow ${nova_thai.className}`}>
-                                <p className="leading-relaxed text-xl ">
-                                    {item.subtitle}
-                                </p>
-                                <p className="text-[12px] ">{item.title}</p>
-                            </div>
-                        </div>
-                        <div className='border-1 border-gray-200'></div>
-                    </div>
-                    
-                );
-            })}
-        </div>
+          );
+        })}
+      </div>
     );
 }

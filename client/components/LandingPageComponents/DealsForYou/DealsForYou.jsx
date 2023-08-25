@@ -15,7 +15,7 @@ const DealsForYou = ({ posts }) => {
       console.log(ele);
     }
   }, [ele]);
-  return status ? null : (
+  return (
     <>
       {isMobile ? (
         <Grid container spacing={2} padding={3}>
@@ -25,11 +25,13 @@ const DealsForYou = ({ posts }) => {
         </Grid>
       ) : (
         <Grid container spacing={2} padding={3}>
-          <Grid item xs={3} md={2} xl={2}>
-            {status ? null : <ServicesCard />}
-          </Grid>
-          <Grid item xs={9} md={10} xl={10}>
-            <ProductsSection posts={posts} />
+          {!status && (
+            <Grid item xs={3} md={2} xl={2}>
+              <ServicesCard />
+            </Grid>
+          )}
+          <Grid item xs={status ? 12 : 9} md={status ? 12 : 10} xl={status ? 12 : 10}>
+            <ProductsSection posts={posts} num={status ? 5 : 4} />
           </Grid>
         </Grid>
       )}

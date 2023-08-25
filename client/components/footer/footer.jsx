@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useMediaQuery } from "@mui/material"
 
-export default function footer() {
+export default function Footer() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (

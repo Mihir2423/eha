@@ -24,6 +24,7 @@ const Home = ({ posts, filteredItems }) => {
         <meta name="description" content="Get all electronics products" />
       </Head>
       <HomePage posts={posts} laptops={filteredItems} />
+      <Footer/>
     </>
   );
 };

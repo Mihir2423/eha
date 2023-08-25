@@ -3,6 +3,7 @@ import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
 import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
+import { nova, nova_thai } from "@/utilities/font"
 
 const MapComponent = () => {
   const mapRef = useRef(null);
@@ -46,7 +47,7 @@ const MapComponent = () => {
   };
 
   return (
-    <div className='flex'>
+    <div className={` ${nova_thai.className} flex`}>
       <div className="left-0 top-[7px]  text-zinc-300 text-lg font-medium px-4  ">Locate Us</div>
       <div ref={mapRef} style={{ width: '262px', height: '196px' }} className=''></div>
       <div className='flex-cols w-[29px] h-[66px] top-[3px] opacity-70 bg-neutral-600 ml-1 '>

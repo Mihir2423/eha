@@ -6,7 +6,7 @@ import SmallTitle from "../SmallTitle";
 
 const ProductsSection = ({ posts, num }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const isSmallMobile = useMediaQuery("(max-width: 358px)");
+  const isSmallMobile = useMediaQuery("(max-width: 380px)");
 
   const totalslides = isSmallMobile ? 1.5 : isMobile ? 1.7 : num;
   return (

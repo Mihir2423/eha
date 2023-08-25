@@ -71,11 +71,11 @@ const SingleProduct = ({ item }) => {
               // onClick={() => dispatch(incrementItems(item?.id))}
               onClick={addToCart}
             >
-              <Typography
+              <h3
                 className={`text-white normal-case text-base${nova_thai.className} text-[10px] md:text-[13px] `}
               >
                 {"Add To Cart"}
-              </Typography>
+              </h3>
               <Image
                 src={greyCart}
                 alt={"cart"}

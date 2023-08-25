@@ -4,9 +4,11 @@ import SectionTitle from "./SectionTitle";
 import AllProducts from "./AllProducts";
 import SmallTitle from "../SmallTitle";
 
-const ProductsSection = ({ posts }) => {
+const ProductsSection = ({ posts, num }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const isSmallMobile = useMediaQuery("(max-width: 568px)");
+  const isSmallMobile = useMediaQuery("(max-width: 358px)");
+
+  const totalslides = isSmallMobile ? 1.5 : isMobile ? 1.7 : num;
   return (
     <Box>
       {isMobile ? <SmallTitle title={"DEALS FOR YOU"} /> : <SectionTitle />}
@@ -16,7 +18,7 @@ const ProductsSection = ({ posts }) => {
       >
         <AllProducts
           data={posts?.data}
-          totalslides={isSmallMobile ? 1.7 : isMobile ? 2 : 4}
+          totalslides={totalslides}
         />
         {isMobile && (
           <Box

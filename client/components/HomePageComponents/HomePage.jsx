@@ -4,12 +4,13 @@ import React from "react";
 
 const BannerSection = dynamic(() => import("./BannerSection"), {
   loading: () => <p>Loading...</p>,
-  ssr: true
+  ssr: true,
 });
 const DealsForYou = dynamic(
   () => import("../LandingPageComponents/DealsForYou/DealsForYou"),
   {
     loading: () => <p>Loading...</p>,
+    ssr: false
   }
 );
 const BestSeller = dynamic(

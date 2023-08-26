@@ -9,9 +9,9 @@ import { Box } from '@mui/material';
 
 function CardTotal({cartTotal,items,nextStep,prevStep}) {
   return (
-    <div className={`${nova_thai.className} bg-white mt-2 shadow-xl py-8 rounded-md md:fixed md:right-6 md:bottom-[120px] `}>
-      <div className="p-0">
-        <div className="p-2">
+    <div className={`${nova_thai.className} bg-white mt-2 shadow-xl py-8 rounded-md md:fixed md:right-6 md:top-[280px]  `}>
+      <div className="p-0 ">
+        <div className="p-2 ">
           <h6 className="border-b-2 mb-2 mt-1 text-lg font-semibold">
             Payment Details
           </h6>

@@ -32,9 +32,8 @@ export default function CartDetails({nextStep, prevStep}) {
   };
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  return (
-    
-    <div className="md:flex-col items-center p-2 ml-8 shadow-xl">
+  return (  
+    <div className="md:flex-col mx-2 md:p-2 md:ml-12 shadow-xl bg-white md:w-[900px]">
     <div>
     <Typography component="h1" className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 pb-2 flex md:px-4 px-3 py-4">Order Summary <Typography className='text-base m-2'>({items.length} items)</Typography></Typography>
     </div>

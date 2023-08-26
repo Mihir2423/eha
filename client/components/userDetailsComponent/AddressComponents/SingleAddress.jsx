@@ -4,7 +4,7 @@ import { nova_thai } from "@/utilities/font";
 import sideDots from "../../../assets/svg/sideDots.svg";
 import Image from "next/image";
 
-const SingleAddress = () => {
+const SingleAddress = ({ profile }) => {
   return (
     <Box className={`flex justify-between px-8 pr-16 items-center mt-5`}>
       <Box className={`flex gap-5 flex-col`}>
@@ -13,7 +13,7 @@ const SingleAddress = () => {
             variant="h5"
             className={` ${nova_thai.className} text-[18px] text-[#4B4B4B] line-height-[28px]`}
           >
-            Amit
+            {profile?.userAddress?.values?.name}
           </Typography>
           <Typography
             variant="p"
@@ -27,7 +27,11 @@ const SingleAddress = () => {
             variant="p"
             className={`${nova_thai.className} text-[18px] line-height-[28px] text-[#707070]`}
           >
-            184/3, Zone No. 1, Jamshedpur, Jharkhand
+            {/* 184/3, Zone No. 1, Jamshedpur, Jharkhand */}
+            {profile?.userAddress?.values?.address1} ,{" "}
+            {profile?.userAddress?.values?.address2},{" "}
+            {profile?.userAddress?.values?.city},{" "}
+            {profile?.userAddress?.values?.state},{" "}
           </Typography>
         </Box>
       </Box>

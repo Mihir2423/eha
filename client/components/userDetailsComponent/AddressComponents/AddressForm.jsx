@@ -5,7 +5,8 @@ import { nova_thai } from "@/utilities/font";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 
-const AddressForm = ({ setAdd }) => {
+const AddressForm = ({ setAdd, profileId }) => {
+  console.log(profileId);
   const validationSchema = Yup.object({
     name: Yup.string().required("Your name is required"),
     address1: Yup.string().required("Address line 1 is required"),
@@ -33,11 +34,13 @@ const AddressForm = ({ setAdd }) => {
   const onSubmit = async (values) => {
     console.log(values);
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${profileId}}`;
 
       const payload = {
-        userAddress: {
-          values,
+        data: {
+          userAddress: {
+            values,
+          },
         },
       };
 
@@ -220,7 +223,6 @@ const AddressForm = ({ setAdd }) => {
                 <button
                   type="submit"
                   className="text-black h-10 px-8 bg-white rounded-lg transition-colors duration-150 focus:shadow-outline border-2 border-red-500 hover:bg-red-600 hover:text-white shadow-md"
-                  onClick={() => console.log("Do Something")}
                 >
                   Save
                 </button>
@@ -229,7 +231,7 @@ const AddressForm = ({ setAdd }) => {
                   className="h-10 px-5 bg-red-600 rounded-lg transition-colors duration-150 focus:shadow-outline shadow-md"
                   onClick={() => setAdd(false)}
                 >
-                  Submit & Continue
+                  Cancel & Continue
                 </button>
               </div>
             </Form>

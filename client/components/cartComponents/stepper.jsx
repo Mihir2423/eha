@@ -58,7 +58,7 @@ function StepperForm() {
         className={`text-black ${nova.className}`}
       />
 
-      <div style={{ padding: '10px', color: 'black' }} className='items-center md:space-none my-2'>
+      <div style={{ padding: '10px', color: 'black' }} className='items-center md:space-none my-2 flex'>
         {getSectionComponent()}
       </div>
     </div>

@@ -34,9 +34,10 @@ export default function CartDetails({nextStep, prevStep}) {
 
   return (
     
-    <Container className="md:flex  w-full">
-    <div className={`bg-white md:px-4 md:pt-4 py-2 ${nova_thai.className}  shadow-lg drop-rounded-lg rounded-lg  `}>
-    <Typography className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 pb-2 flex md:px-4 px-3 py-4">Order Summary <Typography className='text-base m-2'>({items.length} items)</Typography></Typography>
+    <div className="md:flex-col items-center p-2 ml-8 shadow-xl">
+    <div>
+    <Typography component="h1" className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 pb-2 flex md:px-4 px-3 py-4">Order Summary <Typography className='text-base m-2'>({items.length} items)</Typography></Typography>
+    </div>
       {items.map((item) => (
         <Card className={`${nova_thai.className} shadow-none rounded-none md:flex text-neutral-700 border-b-2 md:w-[880px]`} key={item.id} >
     <center>
@@ -99,10 +100,9 @@ export default function CartDetails({nextStep, prevStep}) {
             </div>
           ) : null}
           
-    </Card>
-  ))}    
- </div>
- {!isEmpty && <CardTotal className="fixed" cartTotal={cartTotal} items={items} nextStep={nextStep} prevStep={prevStep}/>}
-    </Container>
+          </Card>
+          ))}    
+          {!isEmpty && <CardTotal cartTotal={cartTotal} items={items} nextStep={nextStep} prevStep={prevStep}/>}
+    </div>
   );
 }

@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 
 function CardTotal({cartTotal,items,nextStep,prevStep}) {
   return (
-    <div className={`${nova_thai.className} p-4 md:p-0 bg-white md:fixed md:right-0 md:mr-10 md:mt-5 md:w-1/5 md:h-2/5 rounded-md shadow-lg`}>
+    <div className={`${nova_thai.className} bg-white mt-2 shadow-xl py-8 rounded-md md:fixed md:right-6 md:bottom-[120px] `}>
       <div className="p-0">
         <div className="p-2">
           <h6 className="border-b-2 mb-2 mt-1 text-lg font-semibold">

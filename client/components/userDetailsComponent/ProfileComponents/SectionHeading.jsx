@@ -4,7 +4,7 @@ import React from "react";
 
 const SectionHeading = ({title}) => {
   return (
-    <Box className={`px-5 pb-4 border-b-2 border-b-[#D3D3D3] mb-4`}>
+    <Box className={`px-5 pb-4 border-b-2 border-red-500 mb-4`}>
       <h1
         className={` ${nova_thai_semi_bold.className} text-[20px] text-left`}
       >

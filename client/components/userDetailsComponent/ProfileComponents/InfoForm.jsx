@@ -9,9 +9,14 @@ import InputDetailsFields from "./InputDetailsFields";
 import SectionHeading from "./SectionHeading";
 import { nova_thai_bold,nova_thai } from "@/utilities/font";
 import { setDetails } from "@/redux/features/userSlice";
+import fetchDetails from "@/utilities/services";
 
 const InfoForm = ({ setTakeInput, takeInput }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  
+  React.useEffect(() => {
+    fetchDetails();
+  }, []);
 
   const userDetails = useSelector((state) => state.user.userDetails.details);
   const dispatch = useDispatch();
@@ -70,6 +75,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
     >
       {({ errors, touched, values }) => (
         <Form className={`${nova_thai.className} text-left m-4 rounded-md shadow-2xl bg-white py-8`}>
+        <h1 className="text-2xl text-center font-bold border-b-2 pb-4 border-red-500">Personal Information</h1>
             <Box className={`md:flex gap-20 flex-col`}>
               <Box className={`md:flex w-full py-4 px-8 justify-between md:space-x-3`}>
                 <label className="block mt-4">

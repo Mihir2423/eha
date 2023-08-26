@@ -34,12 +34,11 @@ export default function CartDetails({nextStep, prevStep}) {
 
   return (
     
-    <Container className="md:flex md:w-none w-full">
-    <Box className={`bg-white md:px-4 md:pt-4 py-2 ${nova_thai.className}  shadow-lg drop-rounded-lg rounded-lg md:max-w-[100vw] `}>
+    <Container className="md:flex  w-full">
+    <div className={`bg-white md:px-4 md:pt-4 py-2 ${nova_thai.className}  shadow-lg drop-rounded-lg rounded-lg  `}>
     <Typography className="text-neutral-700 text-2xl font-medium border-b-2 mb-4 pb-2 flex md:px-4 px-3 py-4">Order Summary <Typography className='text-base m-2'>({items.length} items)</Typography></Typography>
-    
       {items.map((item) => (
-        <Card className={`${nova_thai.className} shadow-none rounded-none md:flex text-neutral-700 border-b-2`} key={item.id} >
+        <Card className={`${nova_thai.className} shadow-none rounded-none md:flex text-neutral-700 border-b-2 md:w-[880px]`} key={item.id} >
     <center>
         <Image
                         src={item.img}
@@ -62,7 +61,7 @@ export default function CartDetails({nextStep, prevStep}) {
           </div>
 
           {isMobile ? (
-            <Grid className='flex md:align-center md:p-2 md:justify-end md:w-[30%] p-4 justify-between'>
+            <div className='flex md:align-center md:p-2 md:justify-end md:w-[30%] p-4 justify-between'>
               <div className="flex items-center text-gray-400 mt-1" onClick={() => handleRemoveItem(item.id)}>
                 <IconButton aria-label="delete" size="small">
                   <DeleteIcon />
@@ -78,12 +77,12 @@ export default function CartDetails({nextStep, prevStep}) {
                   <AddIcon />
                 </IconButton>
               </div>
-            </Grid>
+            </div>
           ) : null}
           {!isMobile ? (
-            <div className='md:flex-end md:align-center md:p-2 md:justify-end md:w-[30%]'>
-              <div className="bg-red-200 flex rounded-md border-1 flex-end justify-end">
-                <IconButton aria-label="plus" className='p-1 border-2' onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
+            <div className='flex-col flex-end  p-2 items-end justify-end'>
+              <div className="bg-red-200 flex rounded-md border-1">
+                <IconButton aria-label="plus" className='p-2 border-2' onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
                   <AddIcon />
                 </IconButton>
                 <div className="p-3 font-semibold border-2 bg-white">{item?.quantity}</div>
@@ -102,7 +101,7 @@ export default function CartDetails({nextStep, prevStep}) {
           
     </Card>
   ))}    
- </Box>
+ </div>
  {!isEmpty && <CardTotal className="fixed" cartTotal={cartTotal} items={items} nextStep={nextStep} prevStep={prevStep}/>}
     </Container>
   );

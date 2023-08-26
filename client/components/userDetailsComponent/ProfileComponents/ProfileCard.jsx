@@ -1,12 +1,16 @@
+
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { nova_thai } from "@/utilities/font";
 import editIconSvg from "../../../assets/svg/editIconSvg.svg";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import fetchDetails from "@/utilities/services";
 
-const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
-
+const ProfileCard = ({ edit, setTakeInput, takeInput,details }) => {
+  React.useEffect(() => {
+    fetchDetails();
+  }, []);
   const userDetails = useSelector((state) => state.user.userDetails.details);
   return (
     <Box

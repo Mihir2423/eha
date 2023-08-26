@@ -23,7 +23,7 @@ export default function Footer() {
 
       {
         isMobile ? (
-          <Box className="bg-black rounded-none">
+          <Box className="bg-black rounded-none" sx={{backgroundColor:"black"}}>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon className="text-white" />}
@@ -113,7 +113,7 @@ export default function Footer() {
         <Typography className="text-center text-white text-[15px] font-normal bg-black p-2 md:p-none">
           © 2023 EHA SHIVAM TECHNOLOGIES
         </Typography>
-        <Typography className="text-center text-white text-[15px] font-normal bg-black">Designed by Void Work</Typography>
+        <Typography className="text-center text-white text-[15px] font-normal bg-black">Designed by Trinity</Typography>
         </Box>
       </Box>
     </>

@@ -20,7 +20,7 @@ const PersonalInformation = () => {
     <Grid container  className="md:px-36 px-4 items-center justify-center md:justify-none">
     {
       isMobile ?
-      <Grid item xs={8.6} md={8.6} xl={8.6} className="w-full bg-white flex items-center justify-center rounded-md">
+      <Grid item  md={8.6} xl={8.6} className="w-full bg-white flex items-center justify-center rounded-md">
         {
           userDetails ?
           <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} className="bg-white"/> 
@@ -47,7 +47,7 @@ const PersonalInformation = () => {
       <Grid item xs={8.6} md={8.6} xl={8.6}>
         {
           userDetails ?
-          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} /> 
+          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput}  /> 
           :
            <InfoNotFound setTakeInput={setTakeInput}
            takeInput={takeInput}/>

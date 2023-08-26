@@ -32,15 +32,6 @@ const Home = ({ posts, filteredItems }) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  // const session = await getSession(context);
-  // if (session == null) {
-  //   return {
-  //     redirect: {
-  //       destination: "/auth/login",
-  //       permanent: true,
-  //     },
-  //   };
-  // }
   try {
     const [postsRes, filteredItemsRes] = await Promise.all([
       fetch(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/products?populate=*`),

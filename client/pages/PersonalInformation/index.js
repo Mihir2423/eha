@@ -1,52 +1,58 @@
 import PersonalInformation from "@/components/userDetailsComponent/PersonalInformation";
 import { setDetails } from "@/redux/features/userSlice";
-import { Box } from "@mui/material";
-import { useRouter } from "next/router"; // Corrected import
-import React, { useEffect } from "react"; // Importing useEffect directly
-import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@mui/material"; // Corrected import
+import React from "react"; // Importing useEffect directly
+import { useDispatch } from "react-redux";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
-const Profile = () => {
-  const { data: session } = useSession();
+const Profile = ({profile}) => {
   const dispatch = useDispatch();
-  // const [Details, setDetails] = React.useState(null);
-
-  useEffect(() => {
-    async function getProfile() {
-      console.log("getProfile");
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`, {
-          headers: {
-            Authorization: `Bearer ${session?.jwt}`,
-          },
-        });
-
-        console.log(response.data.data?.attributes);
-        dispatch(setDetails(response.data.data?.attributes));
-      } catch (error) {
-        // Handle errors here
-        console.error('Error fetching profile:', error);
-      }
-    }
-
-    if (session) {
-      getProfile();
-    }
-  }, [session, dispatch]);
-
-
+  dispatch(setDetails(profile));
   return (
     <Box className="mt-20">
-    <div
-        style={{ overflow: "hidden", transform: "translateY(-0px) " }}
-      >
+      <div style={{ overflow: "hidden", transform: "translateY(-0px) " }}>
         <div className="loginBg ">
-      <PersonalInformation  />
-    </div>
-    </div>
+          <PersonalInformation />
+        </div>
+      </div>
     </Box>
   );
 };
 
 export default Profile;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (session == null) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: true,
+      },
+    };
+  }
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`,
+      {
+        headers: {
+          Authorization: `Bearer ${session?.jwt}`,
+        },
+      }
+    );
+    const profile = response.data.data?.attributes;
+    return {
+      props: {
+        profile,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+    return {
+      props: {
+        profile: {},
+      },
+    };
+  }
+}

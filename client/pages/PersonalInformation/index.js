@@ -9,32 +9,40 @@ import { useSession } from "next-auth/react";
 
 const Profile = () => {
   const { data: session } = useSession();
-  const [userData, setUserData] = React.useState(null);
-  const dispatch =useDispatch();
-  async function getProfile() {
-    console.log("getProfile");
-    // const token = window.localStorage.getItem("token");
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`
-          , {
-            headers: {
-              Authorization: `Bearer ${session?.jwt}`,
-            },
-          }
-        ); 
-    console.log(response.data.data?.attributes);
-    dispatch(setDetails(response.data.data.attributes));
-  };
-  useEffect(() => {
-    getProfile();
-  }, []);
-  return (
+  const dispatch = useDispatch();
+  // const [Details, setDetails] = React.useState(null);
 
+  useEffect(() => {
+    async function getProfile() {
+      console.log("getProfile");
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`, {
+          headers: {
+            Authorization: `Bearer ${session?.jwt}`,
+          },
+        });
+
+        console.log(response.data.data?.attributes);
+        dispatch(setDetails(response.data.data?.attributes));
+      } catch (error) {
+        // Handle errors here
+        console.error('Error fetching profile:', error);
+      }
+    }
+
+    if (session) {
+      getProfile();
+    }
+  }, [session, dispatch]);
+
+
+  return (
     <Box className="mt-20">
     <div
         style={{ overflow: "hidden", transform: "translateY(-0px) " }}
       >
         <div className="loginBg ">
-      <PersonalInformation userData={userData} />
+      <PersonalInformation  />
     </div>
     </div>
     </Box>

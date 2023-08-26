@@ -39,7 +39,7 @@ function StepperForm() {
   }
 
   return (
-    <div className='pt-4'>
+    <div className='pt-6'>
       <Stepper
         steps={steps}
         activeStep={activeStep}
@@ -58,7 +58,7 @@ function StepperForm() {
         className={`text-black ${nova.className}`}
       />
 
-      <div style={{ padding: '60px', color: 'black' }} className='items-center '>
+      <div style={{ padding: '10px', color: 'black' }} className='items-center md:space-none my-2'>
         {getSectionComponent()}
       </div>
     </div>

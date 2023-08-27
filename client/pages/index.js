@@ -7,6 +7,7 @@ import { getSession } from "next-auth/react";
 import Footer from "@/components/footer/footer";
 import Loading from "@/utils/loading";
 
+
 const Home = ({ posts, filteredItems }) => {
   console.log(process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL);
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Home = ({ posts, filteredItems }) => {
       <HomePage posts={posts} laptops={filteredItems} />
       <Footer/>
       </Suspense>
+
     </>
   );
 };

@@ -28,6 +28,7 @@ const AboutProduct = ({ data }) => {
       alert("Delivery not available");
     }
   };
+
   return (
     <Box className={``}>
       <Box>

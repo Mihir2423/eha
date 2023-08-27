@@ -1,14 +1,11 @@
-import {
-  Box,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
 import laptopImg from "../../assets/svg/laptopImg.svg";
 import greyCart from "../../assets/svg/greyCart.svg";
 import heartImg from "../../assets/svg/heartImg.svg";
 import searchIcon from "../../assets/svg/searchIcon.svg";
+import ListIcon from "../../assets/svg/listIcom.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -17,7 +14,7 @@ import styles from "./dealStyle.module.css";
 import { useCart } from "react-use-cart";
 
 import localFont from "next/font/local";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addedMsg } from "@/redux/features/addToCartSlice";
 
 const nova_thai = localFont({
@@ -28,8 +25,17 @@ const nova_thai = localFont({
 const SingleProduct = ({ item }) => {
   const { addItem } = useCart();
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const isSmallMobile = useMediaQuery("(max-width: 380px)");
   const dispatch = useDispatch();
   const router = useRouter();
+  const status = useSelector((state) => state?.govCorporate?.status);
+  const [ele, setEle] = React.useState(null);
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const eleItem = localStorage.getItem("ele");
+      setEle(eleItem);
+    }
+  }, [ele, status]);
 
   const addToCart = () => {
     addItem({
@@ -74,30 +80,38 @@ const SingleProduct = ({ item }) => {
           {/* Details End*/}
 
           <Box className={`${styles.cartBtns}`}>
-            <Box className={`flex justify-between items-center px-2`}>
+            <Box className={`flex ${ele || status ? `justify-center`: `justify-between`} items-center px-2`}>
               <Box
                 className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-[8px]`}
                 style={{
                   borderRadius: "5px",
                 }}
-                // onClick={() => dispatch(incrementItems(item?.id))}
                 onClick={addToCart}
               >
                 <h3
-                  className={`text-white normal-case text-base${nova_thai.className} text-[10px] md:text-[13px] `}
+                  className={`text-white normal-case text-base${
+                    nova_thai.className
+                  } text-[10px] md:text-[13px] 
+                  ${isSmallMobile && (ele || status) ? "text-[10px]" : isSmallMobile ? "text-[9px]" : ""}`}
                 >
                   {"Add To Cart"}
                 </h3>
                 <Image
-                  src={greyCart}
+                  src={ele || status ? ListIcon : greyCart}
                   alt={"cart"}
-                  style={{ width: isMobile ? "13px" : "30px" }}
+                  style={{ width: isMobile ? "13px" : (ele || status) ? "20px" : "30px" }}
                 />
               </Box>
               <Box
-                className={`rounded-full border-black border-2 p-2 overflow-hidden`}
+                className={`${
+                  ele || status ? `hidden` : ``
+                } rounded-full border-black border-2 p-1 md:p-2 overflow-hidden`}
               >
-                <Image src={heartImg} alt={"cart"} />
+                <Image
+                  src={heartImg}
+                  alt={"cart"}
+                  className="w-[16px] h-[16px]"
+                />
               </Box>
             </Box>
           </Box>

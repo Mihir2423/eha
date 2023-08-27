@@ -36,7 +36,7 @@ export default function App({ Component, pageProps, session }) {
               <DrawerHeader />
               <Component {...pageProps} />
             </Box>
-            {/* <Footer /> */}
+            <Footer />
           </ApolloProvider>
         </ReduxProvider>
       </CartProvider>

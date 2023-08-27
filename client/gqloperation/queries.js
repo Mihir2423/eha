@@ -50,7 +50,6 @@ export const GET_PRODUCT = gql`
   }
 `;
 
-
 export const GET_ALL_CATEGORIES = gql`
   query Categories {
     categories {
@@ -141,3 +140,54 @@ export const GET_PRODUCT_BY_NAME = gql`
     }
   }
 `;
+
+// export const GET_PRODUCTS_Details = gql`
+//   query GetProducts($categoryFilters: CategoryFiltersInput, $productFilters: ProductFiltersInput, $sortField: [String]) {
+//     category(id: $categoryFilters.categoryId) {
+//       data {
+//         attributes {
+//           products(sort: $sortField) {
+//             data {
+//               id
+//               attributes {
+//                 name
+//                 price
+//                 original_price
+//                 description
+//                 thumbnail {
+//                   data {
+//                     attributes {
+//                       url
+//                     }
+//                   }
+//                 }
+//                 updatedAt
+//                 slug
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     products(filters: $productFilters, sort: $sortField) {
+//       data {
+//         id
+//         attributes {
+//           name
+//           price
+//           original_price
+//           description
+//           thumbnail {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           updatedAt
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `;

@@ -11,26 +11,27 @@ import SearchIcon from "@mui/icons-material/Search";
 import CartIcon from "../../assets/svg/Cart.svg";
 import ListIcon from "../../assets/svg/listIcom.svg";
 import ProfileIcon from "../../assets/svg/ProfileIcon.svg";
-import { mainTitle, smallTypo } from "@/styles/typoStyles";
-import { useRouter } from "next/router";
-
-import styles from "../page.module.css";
 import Image from "next/image";
+import { useLazyQuery } from "@apollo/client";
+import { useSession } from "next-auth/react";
+import { useCart } from "react-use-cart";
+
 import Details from "./Details";
 import Categories from "./Categories";
-import Link from "next/link";
-import UIButton from "../ui/UIButton";
-import { useLazyQuery } from "@apollo/client";
-import { GET_PRODUCT_BY_NAME } from "@/gqloperation/queries";
 import CartMenu from "./CartMenu";
 import ProfileMenu from "./ProfileMenu";
-import { useSelector } from "react-redux";
-
-import { useSession } from "next-auth/react";
-import localFont from "next/font/local";
-import { useCart } from "react-use-cart";
-import { profile, product } from "./constant";
 import SearchContent from "./SearchContent";
+import UIButton from "../ui/UIButton";
+
+import { GET_PRODUCT_BY_NAME } from "@/gqloperation/queries";
+import { mainTitle, smallTypo } from "@/styles/typoStyles";
+import localFont from "next/font/local";
+
+import styles from "../page.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { product, profile } from "./constant";
 
 const nova = localFont({
   src: "../../assets/fonts/NovaSlim-Regular.ttf",
@@ -147,8 +148,6 @@ const Header = () => {
       console.log(ele);
     }
   }, [ele, status]);
-  console.log("This below");
-  console.log(ele, status);
 
   return (
     <AppBar position="fixed" className={`bg-black shadow-none`}>
@@ -202,8 +201,20 @@ const Header = () => {
                       : CartIcon
                   }
                   alt="cart"
-                  width={isMobile ? 30 : 45}
-                  height={isMobile ? 30 : 45}
+                  width={
+                    (ele === "Government" || ele === "Commercial") && isMobile
+                      ? 20
+                      : ele === "Government" || ele === "Commercial || isMobile"
+                      ? 30
+                      : 35
+                  }
+                  height={
+                    (ele === "Government" || ele === "Commercial") && isMobile
+                      ? 20
+                      : ele === "Government" || ele === "Commercial || isMobile"
+                      ? 30
+                      : 40
+                  }
                   className="-mt-2"
                 />
                 <div className="absolute -top-[10px] -right-[8px]">

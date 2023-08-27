@@ -80,7 +80,7 @@ const SingleProduct = ({ item }) => {
           {/* Details End*/}
 
           <Box className={`${styles.cartBtns}`}>
-            <Box className={`flex justify-between items-center px-2`}>
+            <Box className={`flex ${ele || status ? `justify-center`: `justify-between`} items-center px-2`}>
               <Box
                 className={` bg-black py-2 px-[7px] md:px-3 flex justify-between items-center gap-1 md:gap-[8px]`}
                 style={{
@@ -92,14 +92,14 @@ const SingleProduct = ({ item }) => {
                   className={`text-white normal-case text-base${
                     nova_thai.className
                   } text-[10px] md:text-[13px] 
-                  ${isSmallMobile < 380 ? "text-[7px]" : ""}`}
+                  ${isSmallMobile && (ele || status) ? "text-[10px]" : isSmallMobile ? "text-[9px]" : ""}`}
                 >
                   {"Add To Cart"}
                 </h3>
                 <Image
                   src={ele || status ? ListIcon : greyCart}
                   alt={"cart"}
-                  style={{ width: isMobile ? "13px" : "30px" }}
+                  style={{ width: isMobile ? "13px" : (ele || status) ? "20px" : "30px" }}
                 />
               </Box>
               <Box

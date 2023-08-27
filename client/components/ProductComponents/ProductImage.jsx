@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import React from "react";
 
 import laptopImg from "../../assets/svg/laptopImg.svg";
@@ -9,11 +9,12 @@ import AddBtns from "./AddBtns";
 const ProductImage = ({ data }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [currImage, setCurrImage] = React.useState(0);
+  console.log(data, "dataImage");
   return (
-    <Box>
-      <Box className={`flex pl-6 text-black`}>
+    <div>
+      <div className={`flex pl-6 text-black`}>
         {!isMobile && (
-          <Box
+          <div
             className={`flex flex-col gap-6 border-2 border-gray-300 px-2 py-4 text-black`}
           >
             {data?.attributes?.image?.data?.map((item, i) => (
@@ -32,10 +33,11 @@ const ProductImage = ({ data }) => {
                 }
               />
             ))}
-          </Box>
+          </div>
         )}
-        <Box
-          className={`md:border-2  md:border-gray-300 border-l-0 flex flex-col md:flex-row items-center justify-center px-10 md:py-10 py-2`}
+        <div
+          className={`md:border-2  md:border-gray-300 flex flex-col md:flex-row items-center justify-center px-10 md:py-10 py-2`}
+          style={{borderLeft: 0}}
         >
           <Image
             src={data?.attributes?.image?.data[currImage]?.attributes?.url}
@@ -46,9 +48,9 @@ const ProductImage = ({ data }) => {
             style={{ width: 450, minHeight: isMobile ? "200px" : "350px" }}
           />
           {isMobile && (
-            <Box className={`flex gap-[7px]`}>
+            <div className={`flex gap-[7px]`}>
               {data?.attributes?.image?.data?.map((_, i) => (
-                <Box
+                <div
                   key={i}
                   className={`w-[13px] h-[13px] rounded-full mt-2 ${
                     currImage === i ? `bg-[#F61C0D]` : `bg-[#818181]`
@@ -56,12 +58,12 @@ const ProductImage = ({ data }) => {
                   onClick={() => setCurrImage(i)}
                 />
               ))}
-            </Box>
+            </div>
           )}
-        </Box>
-      </Box>
-      {!isMobile && <AddBtns isMobile={isMobile} />}
-    </Box>
+        </div>
+      </div>
+      {!isMobile && <AddBtns isMobile={isMobile} item={data} />}
+    </div>
   );
 };
 

@@ -17,7 +17,6 @@ const nova_thai_600 = localFont({
   display: 'swap',
 })
 const AboutProduct = ({ data }) => {
-  console.log(data);
   return (
     <Box className={``}>
       <Box>

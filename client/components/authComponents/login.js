@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { getToken } from "@/redux/features/userSlice";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import Loading from "@/utils/loading";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Login = () => {
     identifier: "",
     password: "",
   };
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading/>;
 
   const validationSchema = Yup.object().shape({
     identifier: Yup.string().required("identifier is required"),
@@ -37,11 +38,6 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     try {
-      // const { data } = await loginUser({
-      //   variables: {
-      //     input: values,
-      //   },
-      // });
       const result = await signIn("credentials", {
         redirect: false,
         username: values.identifier,

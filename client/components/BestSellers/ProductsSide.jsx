@@ -7,10 +7,10 @@ import SmallTitle from "../LandingPageComponents/SmallTitle";
 const ProductsSide = ({ id, sortField, dir }) => {
   const { content, title } = useProductsData(id, sortField, dir);
   return (
-    <Box className={`ml-4`}>
+    <Box className={`ml-4 mt-16 md:mt-1`}>
         <Title title={title} viewAll={false} />
         <SmallTitle title={title} id={id} />
-      <Box className={`flex flex-wrap gap-3 md:ml-10`}>{content}</Box>
+      <Box className={`flex flex-wrap gap-2 md:ml-10`}>{content}</Box>
     </Box>
   );
 };

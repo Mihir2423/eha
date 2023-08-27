@@ -28,9 +28,9 @@ const BestSeller = ({ posts }) => {
           className={`bg-[#EA1D25] absolute w-[100px] flex items-center justify-center py-2 top-[-15px] left-1/2 -translate-x-1/2 `}
           onClick={() => router.push(`/category?id=1`)}
         >
-          <Typography variant="span" className="text-white">
+          <span className="text-white font-[NovaThai]">
             VIEW ALL
-          </Typography>
+          </span>
         </Box>
       )}
     </Box>

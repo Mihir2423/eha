@@ -3,8 +3,6 @@ import React, { useEffect } from "react";
 import { getToken } from "@/redux/features/userSlice";
 import { useDispatch } from "react-redux";
 import Head from "next/head";
-import { getSession } from "next-auth/react";
-import Footer from "@/components/footer/footer";
 
 const Home = ({ posts, filteredItems }) => {
   console.log(process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL);
@@ -24,7 +22,6 @@ const Home = ({ posts, filteredItems }) => {
         <meta name="description" content="Get all electronics products" />
       </Head>
       <HomePage posts={posts} laptops={filteredItems} />
-      <Footer/>
     </>
   );
 };

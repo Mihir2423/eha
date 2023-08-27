@@ -6,8 +6,7 @@ import starIcon from "../../assets/svg/star.svg";
 
 import Image from "next/image";
 import { checkPincode } from "../../utilities/pincode";
-import localFont from 'next/font/local'
-import { render } from "react-dom";
+import localFont from 'next/font/local';
 
 
 const nova_thai = localFont({

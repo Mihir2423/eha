@@ -5,15 +5,13 @@ import {
   OutlinedInput,
   Toolbar,
   Typography,
-  Menu,
-  MenuItem,
   useMediaQuery,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CartIcon from "../../assets/svg/Cart.svg";
+import ListIcon from "../../assets/svg/listIcom.svg";
 import ProfileIcon from "../../assets/svg/ProfileIcon.svg";
 import { mainTitle, smallTypo } from "@/styles/typoStyles";
-import { nova_thai } from "@/utilities/font";
 import { useRouter } from "next/router";
 
 import styles from "../page.module.css";
@@ -27,61 +25,31 @@ import { GET_PRODUCT_BY_NAME } from "@/gqloperation/queries";
 import CartMenu from "./CartMenu";
 import ProfileMenu from "./ProfileMenu";
 import { useSelector } from "react-redux";
-import img from "../../assets/png/pngwing 7.png";
-import { signOut, useSession } from "next-auth/react";
 
+import { useSession } from "next-auth/react";
 import localFont from "next/font/local";
 import { useCart } from "react-use-cart";
+import { profile, product } from "./constant";
+import SearchContent from "./SearchContent";
 
-const profile = [
-  {
-    id: 1,
-    name: "Personal Information",
-    component: "PersonalInformation",
-  },
-  {
-    id: 2,
-    name: "My Orders",
-    component: "MyOrders",
-  },
-  {
-    id: 3,
-    name: "Manage Address",
-    component: "ManageAddress",
-  },
-  {
-    id: 4,
-    name: "Change Password",
-    component: "ChangePassword",
-  },
-  {
-    id: 5,
-    name: "Sign Out",
-    component: "auth/login",
-  },
-];
-const product = [
-  {
-    id: 1,
-    name: "Product 1",
-    price: 100,
-    image: img,
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: 200,
-    image: img,
-  },
-];
 const nova = localFont({
   src: "../../assets/fonts/NovaSlim-Regular.ttf",
   display: "swap",
 });
 
 const Header = () => {
+  const router = useRouter();
   const { items } = useCart();
+
   const [totalItems, setTotalItems] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [profileEl, setprofileEl] = useState(null);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [ele, setEle] = React.useState(null);
+
+  const status = useSelector((state) => state?.govCorporate?.status);
 
   useEffect(() => {
     setTotalItems(items.length);
@@ -91,15 +59,17 @@ const Header = () => {
 
   React.useEffect(() => {
     if (session == null) return;
-    console.log("session.jwt", session.jwt);
   }, [session]);
-  const state = useSelector((state) => state?.user?.userDetails?.token);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [profileEl, setprofileEl] = useState(null);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const [searchInput, setSearchInput] = useState("");
+  React.useEffect(() => {
+    debouncedHandleQuery();
+    return () => clearTimeout(debouncedHandleQuery);
+  }, [searchInput]);
+
+  const [
+    getProducts,
+    { data: { products: { data: productsData } = {} } = {}, loading, error },
+  ] = useLazyQuery(GET_PRODUCT_BY_NAME);
 
   // Function to open the cart menu
   const handleOpenCart = (event) => {
@@ -112,11 +82,6 @@ const Header = () => {
     setAnchorEl(null);
     setIsCartOpen(false);
   };
-
-  const [
-    getProducts,
-    { data: { products: { data: productsData } = {} } = {}, loading, error },
-  ] = useLazyQuery(GET_PRODUCT_BY_NAME);
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);
@@ -140,53 +105,13 @@ const Header = () => {
   let content;
   if (searchInput.length !== 0) {
     content = (
-      <Box
-        className={`absolute flex gap-8 flex-col w-full  bg-[#f1f1f1] z-10 shadow-md shadow-black py-[15px] px-[15px] rounded-b-[10px] max-h-[300px] overflow-y-scroll`}
-      >
-        {!productsData ? (
-          <h4
-            className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
-          >
-            Searching...
-          </h4>
-        ) : productsData.length !== 0 ? (
-          productsData.map((item, i) => (
-            <Box
-              key={i}
-              className={`cursor-pointer flex gap-5 items-center border-b-[#c7c6c6] border-b-[2px] pb-3`}
-              onClick={() => {
-                router.push(`/product/${item?.id}`);
-                setSearchInput("");
-              }}
-            >
-              <Image
-                src={item?.attributes?.thumbnail?.data?.attributes?.url}
-                width={38}
-                height={38}
-                alt="product"
-              />
-              <h4 className={` ${nova_thai.className} text-black text-[15px]`}>
-                {item?.attributes?.name}
-              </h4>
-            </Box>
-          ))
-        ) : (
-          <h4
-            className={` ${nova_thai.className} text-black text-[15px] cursor-pointer`}
-          >
-            No Products Found
-          </h4>
-        )}
-      </Box>
+      <SearchContent
+        productsData={productsData}
+        setSearchInput={setSearchInput}
+      />
     );
   }
 
-  React.useEffect(() => {
-    debouncedHandleQuery();
-    return () => clearTimeout(debouncedHandleQuery);
-  }, [searchInput]);
-
-  const router = useRouter();
   const handleProfileOpen = () => {
     setprofileEl(event.currentTarget);
     setIsProfileOpen(true);
@@ -196,9 +121,7 @@ const Header = () => {
     setIsProfileOpen(false);
   };
   const handleSearch = () => {
-    if (searchInput === "") {
-      console.log("No input"); // Add Toast in future
-    } else {
+    if (searchInput !== "") {
       router.push(`/search?name=${searchInput}`);
       setSearchInput("");
     }
@@ -216,6 +139,17 @@ const Header = () => {
       color: "rgba(0, 0, 0, 1)",
     },
   };
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const eleItem = localStorage.getItem("ele");
+      setEle(eleItem);
+      console.log(ele);
+    }
+  }, [ele, status]);
+  console.log("This below");
+  console.log(ele, status);
+
   return (
     <AppBar position="fixed" className={`bg-black shadow-none`}>
       {!isMobile && <Details />}
@@ -256,37 +190,52 @@ const Header = () => {
                 {content}
               </Box>
             )}
-            <button className="relative" onClick={handleOpenCart}>
-              <Image
-                src={CartIcon}
-                alt="cart"
-                width={isMobile ? 30 : 45}
-                height={isMobile ? 30 : 45}
-                className="-mt-2"
-              />
-              <div className="absolute -top-[10px] -right-[8px]" >
-                <div
-                  className={`bg-[#009A4C] rounded-full h-[20px] w-[20px] flex items-center justify-center `}
-                >
-                  <h1 className={`text-[10px]`}>{totalItems}</h1>
-                </div>
-              </div>
-            </button>
-            {!session ? (
-              <Link href="/auth/login">
-                <UIButton title={"Sign in"} />
-              </Link>
-            ) : (
-              <button onClick={handleProfileOpen}>
+            <div className="flex items-center justify-between gap-4 md:gap-10">
+              <button
+                className="relative translate-y-[4px]"
+                onClick={handleOpenCart}
+              >
                 <Image
-                  src={ProfileIcon}
-                  alt="profile"
+                  src={
+                    ele === "Government" || ele === "Commercial"
+                      ? ListIcon
+                      : CartIcon
+                  }
+                  alt="cart"
                   width={isMobile ? 30 : 45}
                   height={isMobile ? 30 : 45}
-                  className=" text-white relative"
+                  className="-mt-2"
                 />
+                <div className="absolute -top-[10px] -right-[8px]">
+                  <div
+                    className={`bg-[#009A4C] rounded-full h-[20px] w-[20px] flex items-center justify-center `}
+                  >
+                    <h1 className={`text-[10px]`}>{totalItems}</h1>
+                  </div>
+                </div>
               </button>
-            )}
+              {!session ? (
+                <Link
+                  className={`${
+                    ele === "Government" || ele === "Commercial" ? `hidden` : ``
+                  }`}
+                  href="/auth/login"
+                >
+                  <UIButton title={"Sign in"} />
+                </Link>
+              ) : (
+                <button onClick={handleProfileOpen}>
+                  <Image
+                    src={ProfileIcon}
+                    alt="profile"
+                    width={isMobile ? 30 : 45}
+                    height={isMobile ? 30 : 45}
+                    className=" text-white relative"
+                  />
+                </button>
+              )}
+            </div>
+
             <CartMenu
               anchorEl={anchorEl}
               isCartOpen={isCartOpen}

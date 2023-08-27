@@ -30,7 +30,8 @@ import { useSelector } from "react-redux";
 import img from "../../assets/png/pngwing 7.png";
 import { signOut, useSession } from "next-auth/react";
 
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
+import { useCart } from "react-use-cart";
 
 const profile = [
   {
@@ -74,11 +75,17 @@ const product = [
   },
 ];
 const nova = localFont({
-  src: '../../assets/fonts/NovaSlim-Regular.ttf',
-  display: 'swap',
-})
+  src: "../../assets/fonts/NovaSlim-Regular.ttf",
+  display: "swap",
+});
 
 const Header = () => {
+  const { items } = useCart();
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    setTotalItems(items.length);
+  }, [items]);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const { data: session } = useSession();
 
@@ -158,9 +165,7 @@ const Header = () => {
                 height={38}
                 alt="product"
               />
-              <h4
-                className={` ${nova_thai.className} text-black text-[15px]`}
-              >
+              <h4 className={` ${nova_thai.className} text-black text-[15px]`}>
                 {item?.attributes?.name}
               </h4>
             </Box>
@@ -251,7 +256,7 @@ const Header = () => {
                 {content}
               </Box>
             )}
-            <button onClick={handleOpenCart}>
+            <button className="relative" onClick={handleOpenCart}>
               <Image
                 src={CartIcon}
                 alt="cart"
@@ -259,6 +264,13 @@ const Header = () => {
                 height={isMobile ? 30 : 45}
                 className="-mt-2"
               />
+              <div className="absolute -top-[10px] -right-[8px]" >
+                <div
+                  className={`bg-[#009A4C] rounded-full h-[20px] w-[20px] flex items-center justify-center `}
+                >
+                  <h1 className={`text-[10px]`}>{totalItems}</h1>
+                </div>
+              </div>
             </button>
             {!session ? (
               <Link href="/auth/login">

@@ -3,15 +3,15 @@ import React from "react";
 import ProfileCard from "./ProfileComponents/ProfileCard";
 import ProfileRoutes from "./ProfileComponents/ProfileRoutes";
 import InfoForm from "./ProfileComponents/InfoForm";
-import { getdetail } from "@/redux/features/userSlice";
+
 import InfoNotFound from "./ProfileComponents/getpersonalinfo";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useMediaQuery } from "@mui/material";
 
 
 const PersonalInformation = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const dispatch = useDispatch();
+
   const [takeInput, setTakeInput] = React.useState(false);
 
   const userDetails = useSelector((state) => state?.user?.userDetails?.details);

@@ -6,13 +6,13 @@ import Address from "./AddressComponents/Address";
 import AddNewAddressBtn from "./AddressComponents/AddNewAddressBtn";
 import AddressForm from "./AddressComponents/AddressForm";
 
-const ManageAddressPage = () => {
+const ManageAddressPage = ({ profile, profileId }) => {
   const [add, setAdd] = React.useState(false);
   return (
     <Grid container spacing={8} padding={3} paddingX={12}>
       <Grid item xs={3.4} md={3.4} xl={3.4}>
         <Box className={`flex flex-col gap-[56px]`}>
-          <ProfileCard />
+          <ProfileCard profile={profile?.firstName} />
           <ProfileRoutes page={"MANAGE ADDRESS"} />
         </Box>
       </Grid>
@@ -20,11 +20,11 @@ const ManageAddressPage = () => {
         <Box className={`flex flex-col gap-4`}>
           {!add ? (
             <>
-              <Address />
+              <Address profile={profile} />
               <AddNewAddressBtn add={add} setAdd={setAdd} />
             </>
           ) : (
-            <AddressForm setAdd={setAdd} />
+            <AddressForm setAdd={setAdd} profileId={profileId} />
           )}
         </Box>
       </Grid>

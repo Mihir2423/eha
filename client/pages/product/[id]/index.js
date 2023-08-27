@@ -1,15 +1,15 @@
+import Loading from "@/utils/loading";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import React from "react";
 const ProductDetail = dynamic(
   () => import("@/components/ProductComponents/ProductDetail"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
   }
 );
 
 const ProductDetails = ({ product }) => {
-  console.log(product);
   return (
     <>
       <Head>

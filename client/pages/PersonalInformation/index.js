@@ -6,16 +6,12 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { getSession } from "next-auth/react";
 
-const Profile = ({profile}) => {
+const Profile = ({ profile }) => {
   const dispatch = useDispatch();
   dispatch(setDetails(profile));
   return (
-    <Box className="mt-20">
-      <div style={{ overflow: "hidden", transform: "translateY(-0px) " }}>
-        <div className="loginBg ">
-          <PersonalInformation />
-        </div>
-      </div>
+    <Box className="mt-19">
+      <PersonalInformation />
     </Box>
   );
 };

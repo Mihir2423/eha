@@ -39,8 +39,8 @@ export default function CardsFooter() {
       <div className="md:flex border-2 ">
         {card.map((item, index) => {
           return (
-            <div key={index} className={`${nova.className}  md:p-6 w-full md:w-[400px] h-auto text-center border-b-2 space-x-4 md:border-r-2 md:border-b-2`}>
-              <div className="flex flex-col bg-white px-3 py-1 md:h-[260px]">
+            <div key={index} className={`${nova.className}  w-full md:w-[400px] h-auto text-center border-b-2 space-x-4 md:border-r-2 md:border-b-2`}>
+              <div className="flex flex-col bg-white px-3 py-1 md:h-[260px] md:p-6">
                 <span className="flex items-center justify-center">
                   <Image src={item.image} alt={item.alt} className="w-[123px] h-[123px] object-cover " />
                 </span>

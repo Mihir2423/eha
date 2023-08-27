@@ -4,6 +4,7 @@ import React from "react";
 import { CheckCircle, CloseSharp } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { removeMsg } from "@/redux/features/addToCartSlice";
+import Loading from "@/utils/loading";
 
 const BannerSection = dynamic(() => import("./BannerSection"), {
   loading: () => <p>Loading...</p>,
@@ -12,7 +13,7 @@ const BannerSection = dynamic(() => import("./BannerSection"), {
 const DealsForYou = dynamic(
   () => import("../LandingPageComponents/DealsForYou/DealsForYou"),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <Loading />,
     ssr: false,
   }
 );

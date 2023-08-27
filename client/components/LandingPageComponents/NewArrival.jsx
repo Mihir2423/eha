@@ -42,7 +42,7 @@ const NewArrival = ({ posts }) => {
           className={`bg-[#EA1D25] absolute w-[100px] flex items-center justify-center py-2 top-[-15px] left-1/2 -translate-x-1/2 `}
           onClick={() => router.push(`/category?id=2`)}
         >
-          <Typography variant="span" className="text-white">
+          <Typography variant="span" className="text-white font-[NovaThai]">
             VIEW ALL
           </Typography>
         </Box>

@@ -1,8 +1,4 @@
-import {
-  Box,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
 import laptopImg from "../../assets/svg/laptopImg.svg";
@@ -28,6 +24,7 @@ const nova_thai = localFont({
 const SingleProduct = ({ item }) => {
   const { addItem } = useCart();
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const isSmallMobile = useMediaQuery("(max-width: 380px)");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -80,11 +77,13 @@ const SingleProduct = ({ item }) => {
                 style={{
                   borderRadius: "5px",
                 }}
-                // onClick={() => dispatch(incrementItems(item?.id))}
                 onClick={addToCart}
               >
                 <h3
-                  className={`text-white normal-case text-base${nova_thai.className} text-[10px] md:text-[13px] `}
+                  className={`text-white normal-case text-base${
+                    nova_thai.className
+                  } text-[10px] md:text-[13px] 
+                  ${isSmallMobile < 380 ? "text-[7px]" : ""}`}
                 >
                   {"Add To Cart"}
                 </h3>
@@ -95,9 +94,13 @@ const SingleProduct = ({ item }) => {
                 />
               </Box>
               <Box
-                className={`rounded-full border-black border-2 p-2 overflow-hidden`}
+                className={`rounded-full border-black border-2 p-1 md:p-2 overflow-hidden`}
               >
-                <Image src={heartImg} alt={"cart"} />
+                <Image
+                  src={heartImg}
+                  alt={"cart"}
+                  className="w-[16px] h-[16px]"
+                />
               </Box>
             </Box>
           </Box>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setDetails } from "@/redux/features/userSlice";
 
-export default async function fetchDetails() {
+export default async function FetchDetails(){
     const token = window.localStorage.getItem("token");
     try {
       const response = await axios.request({
@@ -16,4 +16,5 @@ export default async function fetchDetails() {
     } catch (error) {
       console.error(error.data);
     }
-}
+};
+

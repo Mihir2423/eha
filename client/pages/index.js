@@ -1,8 +1,12 @@
 import HomePage from "@/components/HomePageComponents/HomePage";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { getToken } from "@/redux/features/userSlice";
 import { useDispatch } from "react-redux";
 import Head from "next/head";
+import { getSession } from "next-auth/react";
+import Footer from "@/components/footer/footer";
+import Loading from "@/utils/loading";
+
 
 const Home = ({ posts, filteredItems }) => {
   console.log(process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL);
@@ -21,7 +25,11 @@ const Home = ({ posts, filteredItems }) => {
         <title>EHA Shivam Technologies | Dashboard</title>
         <meta name="description" content="Get all electronics products" />
       </Head>
+      <Suspense fallback={<Loading/>}>
       <HomePage posts={posts} laptops={filteredItems} />
+      <Footer/>
+      </Suspense>
+
     </>
   );
 };

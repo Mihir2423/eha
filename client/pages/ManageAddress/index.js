@@ -11,7 +11,6 @@ const Profile = ({ profile, id }) => {
     </Box>
   );
 };
-
 export default Profile;
 
 export async function getServerSideProps(context) {

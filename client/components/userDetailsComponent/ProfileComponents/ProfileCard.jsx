@@ -31,7 +31,7 @@ const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
           onClick={() => setTakeInput(true)}
         >
           <Image src={editIconSvg} alt="edit" />
-        </Box>
+        </Box> 
       )}
     </Box>
   );

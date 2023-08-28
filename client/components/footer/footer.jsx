@@ -41,10 +41,10 @@ export default function Footer() {
                   <Link href="/">Home</Link>{" "}
                 </Box>
                 <Box className=" hover:underline active:text-red-500 ">
-                  <Link href="/about">About Us</Link>{" "}
+                  <Link href="/about-us">About Us</Link>{" "}
                 </Box>
                 <Box className=" hover:underline active:text-red-500 ">
-                  <Link href="/contact">Contact Us</Link>
+                  <Link href="/contact-us">Contact Us</Link>
                 </Box>
               </AccordionDetails>
             </Accordion>

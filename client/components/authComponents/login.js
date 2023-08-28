@@ -16,6 +16,7 @@ import { getToken } from "@/redux/features/userSlice";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import Loading from "@/utils/loading";
+import { preventDefault } from "ol/events/Event";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -25,11 +26,16 @@ const Login = () => {
   const [loginUser, { loading, error, data }] = useMutation(LOGIN);
   const forgotPassword = useMutation(FORGOT_PASSWORD);
   const isMobile=useMediaQuery("(max-width: 768px)");
+  const [Error,setError]=React.useState(null);
   const initialValues = {
     identifier: "",
     password: "",
   };
-  if (loading) return <Loading/>;
+  if(loading) return (
+    <div className="w-full flex items-center justify-center">
+      <Loading />
+    </div>
+  );
 
   const validationSchema = Yup.object().shape({
     identifier: Yup.string().required("identifier is required"),
@@ -46,10 +52,9 @@ const Login = () => {
       if (result.ok) {
         setSuccess(true);
         router.replace("/");
-        return;
       } else {
-        setError("Something");
-        setSuccess(false);
+        setError("Login Failed 🫠!!");
+
       }
     } catch (error) {
       setError(error?.message);
@@ -141,32 +146,34 @@ const Login = () => {
                       type="submit"
                       className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-blue"
                     >
-                      Log in
+                      Log in 
                     </button>
                   </div>
                 </div>
-                {error && (
+                {Error && (
                   <Snackbar
+                    className="mb-8"
                     open={true}
                     autoHideDuration={6000}
                     onClose={() => setSuccess(false)}
                     message="Login Failed"
                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                   >
-                    <Alert severity="error">{error.message}</Alert>
+                    <Alert severity="error">{Error}</Alert>
                   </Snackbar>
                 )}
                 {success && (
                   <Snackbar
+                    className="mb-8"
                     open={true}
-                    autoHideDuration={6000}
+                    autoHideDuration={1000}
                     onClose={() => setSuccess(false)}
-                    message="Login Success"
+                    message="Login Success 🥳"
                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                   >
-                    <Alert severity="success">
+                    <Alert severity="success" className="bg-green-200 text-lg">
                       {" "}
-                      Welcome back <b>{data?.login?.user.username}</b>
+                      Welcome back <b>{data?.login?.user.username} 🥳</b>
                     </Alert>
                   </Snackbar>
                 )}

@@ -12,6 +12,14 @@ const nova_thai = localFont({
 })
 
 const Details = () => {
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  };
+  const showPosition = (position) => {
+    console.log(position.coords.latitude, position.coords.longitude);
+  };
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <Box
@@ -47,7 +55,7 @@ const Details = () => {
           <Typography variant="p" className="text-white" sx={smallTypo}>
             Please Select Your Location
           </Typography>
-          <Typography variant="span">
+          <Typography variant="span" onClick={getLocation}>
             <EditIcon width={16} height={14} />
           </Typography>
         </Box>

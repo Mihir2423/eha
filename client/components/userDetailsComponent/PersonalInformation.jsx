@@ -18,10 +18,10 @@ const PersonalInformation = ({profile,ProfileId}) => {
   const userDetails = useSelector((state) => state?.user?.userDetails?.details);
 
   return (
-    <Grid container  className="md:px-36 px-4 items-center justify-center md:justify-none">
+    <Grid   className="md:px-36 px-4 items-center justify-center md:justify-none">
     {
       isMobile ?
-      <Grid item  md={8.6} xl={8.6} className="w-full bg-white flex items-center justify-center rounded-md">
+      <Grid item  md={8.6} xl={8.6} className=" ">
         {
           userDetails ?
           <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} className="bg-white " ProfileId={ProfileId}/> 
@@ -33,7 +33,7 @@ const PersonalInformation = ({profile,ProfileId}) => {
       </Grid>
       :
       <Box className="flex mt-8 item-center justify-center gap-8">
-      <Grid item xs={3.4} md={3} xl={3.4}>
+      <Grid item  md={3} xl={3.4}>
 
       <Box className={`flex flex-col gap-[36px] mt-4`}>
         <ProfileCard

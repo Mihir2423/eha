@@ -15,7 +15,8 @@ const nova_thai = localFont({
   display: "swap",
 });
 
-const AddBtns = ({ item }) => {
+const AddBtns = () => {
+  const item = useSelector((state) => state?.product?.prodDetails);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [ele, setEle] = React.useState(null);
 

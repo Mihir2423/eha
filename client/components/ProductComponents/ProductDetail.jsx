@@ -6,8 +6,14 @@ const ProductImage = dynamic(() => import("./ProductImage"), {
 });
 import AboutProduct from "./AboutProduct";
 import AddBtns from "./AddBtns";
+import { useDispatch } from "react-redux";
+import { getProduct } from "@/redux/features/productSlice";
 
 const ProductDetail = ({ product }) => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getProduct(product?.data));
+  }, [product?.data, dispatch]);
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <>
@@ -22,7 +28,7 @@ const ProductDetail = ({ product }) => {
         </Box>
       </Box>
       <Box className={`sticky bottom-0 left-0 w-full `}>
-        {isMobile && <AddBtns />}
+        {isMobile && <AddBtns data={product?.data} />}
       </Box>
     </>
   );

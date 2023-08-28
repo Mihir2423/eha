@@ -35,7 +35,6 @@ const AddressForm = ({ setAdd, profileId }) => {
     console.log(values);
     try {
       const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${profileId}`;
-
       const payload = {
         data: {
           userAddress: {

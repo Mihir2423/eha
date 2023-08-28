@@ -34,7 +34,7 @@ export default function Footer() {
               <Typography>Useful Links</Typography>
             </AccordionSummary>
             <AccordionDetails className={`text-center text-md bg-black text-white ${nova_thai.className}`}>
-              <Box className=" hover:underline active:text-red-500 "><Link href='/'>Home</Link>     </Box>
+              <Box className=" hover:underline active:text-red-500 "><Link href='/'>Home</Link></Box>
               <Box className=" hover:underline active:text-red-500 "><Link href='/about'>About Us</Link>     </Box>
               <Box className=" hover:underline active:text-red-500 "><Link href='/contact'>Contact Us</Link></Box>
             </AccordionDetails>
@@ -58,10 +58,10 @@ export default function Footer() {
         <Link href="/">Home</Link>
       </li>
       <li className="hover:underline active:text-red-500">
-        <Link href="/about">About Us</Link>
+        <Link href="/about-us">About Us</Link>
       </li>
       <li className="hover:underline active:text-red-500">
-        <Link href="/contact">Contact Us</Link>
+        <Link href="/contact-us">Contact Us</Link>
       </li>
     </ul>
   </Box>

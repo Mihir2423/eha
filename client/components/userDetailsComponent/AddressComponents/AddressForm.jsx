@@ -34,7 +34,7 @@ const AddressForm = ({ setAdd, profileId }) => {
   const onSubmit = async (values) => {
     console.log(values);
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${profileId}}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${profileId}`;
 
       const payload = {
         data: {

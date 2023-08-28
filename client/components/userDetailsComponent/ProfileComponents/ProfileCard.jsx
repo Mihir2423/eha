@@ -5,7 +5,7 @@ import editIconSvg from "../../../assets/svg/editIconSvg.svg";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 
-const ProfileCard = ({ edit, setTakeInput, takeInput, profile }) => {
+const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
   const userDetails = useSelector((state) => state.user.userDetails.details);
   return (
     <Box

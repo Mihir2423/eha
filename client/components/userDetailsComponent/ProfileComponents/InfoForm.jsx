@@ -10,8 +10,11 @@ import SectionHeading from "./SectionHeading";
 import { nova_thai_bold,nova_thai } from "@/utilities/font";
 import { setDetails } from "@/redux/features/userSlice";
 import fetchDetails from "@/utilities/services";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
-const InfoForm = ({ setTakeInput, takeInput }) => {
+const InfoForm = ({ setTakeInput, takeInput,ProfileId }) => {
+  const router=useRouter();
   const isMobile = useMediaQuery("(max-width: 768px)");
   
   React.useEffect(() => {
@@ -20,6 +23,7 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
 
   const userDetails = useSelector((state) => state.user.userDetails.details);
   const dispatch = useDispatch();
+  const { data: session } = useSession();
   // if (loading) {
   //   return <div>Loading...</div>;
   // }
@@ -46,24 +50,30 @@ const InfoForm = ({ setTakeInput, takeInput }) => {
   };
 
   const onSubmit = async (values) => {
-    const token = window.localStorage.getItem("token");
-    const payload = {
-      details: {
-        values,
-      },
-    };
+    console.log(values);
     try {
-      const response = await axios.request({
-        method: userDetails ? "put" : "post",
-        url: `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profile/me`,
-        data:payload,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      dispatch(setDetails(response.data.data));
+      const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${ProfileId}`;
+      const payload = {
+        data: {
+          firstName:values?.firstName,
+          lastName:values?.lastName||"",
+          email:values?.email||"",
+          phoneNo:values?.phoneNo||"",
+          landlineNo:values?.landlineNo||"",
+          gender:values?.gender||" ",
+          dateOfBirth: values?.dateOfBirth|| "",
+          age:values?.age ||""
+        }
+      };
+
+      const headers = {
+        Authorization: `Bearer ${session?.jwt}`,
+      };
+      const response = await axios.put(apiUrl, payload, { headers });
+      dispatch(setDetails(response?.data?.data?.attributes));
+      console.log("API response:", response.data);
     } catch (error) {
-      console.error(error.data);
+      console.error("API error:", error);
     }
   };
   

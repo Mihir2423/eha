@@ -9,7 +9,8 @@ import {  useSelector } from "react-redux";
 import { useMediaQuery } from "@mui/material";
 
 
-const PersonalInformation = () => {
+const PersonalInformation = ({profile,ProfileId}) => {
+
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const [takeInput, setTakeInput] = React.useState(false);
@@ -23,7 +24,7 @@ const PersonalInformation = () => {
       <Grid item  md={8.6} xl={8.6} className="w-full bg-white flex items-center justify-center rounded-md">
         {
           userDetails ?
-          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} className="bg-white"/> 
+          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} className="bg-white " ProfileId={ProfileId}/> 
           :
            <InfoNotFound setTakeInput={setTakeInput}
            takeInput={takeInput}/>
@@ -39,6 +40,7 @@ const PersonalInformation = () => {
           edit={true}
           setTakeInput={setTakeInput}
           takeInput={takeInput}
+          profile={profile}
         
         />
         <ProfileRoutes page={"PERSONAL INFORMATION"} />
@@ -47,7 +49,7 @@ const PersonalInformation = () => {
       <Grid item xs={8.6} md={8.6} xl={8.6}>
         {
           userDetails ?
-          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput}  /> 
+          <InfoForm takeInput={takeInput} setTakeInput={setTakeInput} ProfileId={ProfileId} /> 
           :
            <InfoNotFound setTakeInput={setTakeInput}
            takeInput={takeInput}/>

@@ -6,14 +6,14 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { getSession } from "next-auth/react";
 
-const Profile = ({profile}) => {
+const Profile = ({profile,id}) => {
   const dispatch = useDispatch();
   dispatch(setDetails(profile));
   return (
     <Box className="mt-20">
       <div style={{ overflow: "hidden", transform: "translateY(-0px) " }}>
         <div className="loginBg ">
-          <PersonalInformation />
+          <PersonalInformation profile={profile} ProfileId={id}/>
         </div>
       </div>
     </Box>
@@ -42,9 +42,11 @@ export async function getServerSideProps(context) {
       }
     );
     const profile = response.data.data?.attributes;
+    const id = response.data.data?.id;
     return {
       props: {
         profile,
+        id
       },
     };
   } catch (error) {
@@ -52,6 +54,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         profile: {},
+        id:null
       },
     };
   }

@@ -8,7 +8,6 @@ import { nova, nova_thai } from '@/utilities/font';
 
 function Contact() {
     const handleSubmit = (values, actions) => {
-        // Handle form submission here
         console.log(values);
         actions.setSubmitting(false);
       };

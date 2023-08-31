@@ -4,9 +4,11 @@ import * as Yup from "yup";
 import { nova_thai } from "@/utilities/font";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { setDetails } from "@/redux/features/userSlice";
 
 const AddressForm = ({ setAdd, profileId }) => {
-  console.log(profileId);
+  const dispatch = useDispatch();
   const validationSchema = Yup.object({
     name: Yup.string().required("Your name is required"),
     address1: Yup.string().required("Address line 1 is required"),
@@ -32,7 +34,6 @@ const AddressForm = ({ setAdd, profileId }) => {
   const { data: session } = useSession();
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       const apiUrl = `${process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL}/api/profiles/${profileId}`;
       const payload = {
@@ -48,9 +49,10 @@ const AddressForm = ({ setAdd, profileId }) => {
       };
 
       const response = await axios.put(apiUrl, payload, { headers });
+      console.log(response?.data?.data?.attributes, "response");
 
       // Handle the response as needed
-      console.log("API response:", response.data);
+      dispatch(setDetails(response.data?.data?.attributes));
     } catch (error) {
       console.error("API error:", error);
     }

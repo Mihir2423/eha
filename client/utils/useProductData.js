@@ -31,7 +31,7 @@ const useProductsData = (id, sortField, dir) => {
       productsData = [...productsData].reverse();
     }
     content = productsData?.map((data, i) => (
-      <Box key={i} className={styles.bestSeller}>
+      <Box key={data?.id} className={styles.bestSeller}>
         <SingleProduct item={data} />
       </Box>
     ));

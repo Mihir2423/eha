@@ -204,22 +204,22 @@ const Header = () => {
                   width={
                     (ele === "Government" || ele === "Commercial") && isMobile
                       ? 20
-                      : ele === "Government" || ele === "Commercial || isMobile"
-                      ? 30
+                      : ele === "Government" || ele === "Commercial" || isMobile
+                      ? 25
                       : 35
                   }
                   height={
                     (ele === "Government" || ele === "Commercial") && isMobile
                       ? 20
                       : ele === "Government" || ele === "Commercial || isMobile"
-                      ? 30
+                      ? 25
                       : 40
                   }
                   className="-mt-2"
                 />
                 <div className="absolute -top-[10px] -right-[8px]">
                   <div
-                    className={`bg-[#009A4C] rounded-full h-[20px] w-[20px] flex items-center justify-center `}
+                    className={`bg-[#009A4C] rounded-full h-[15px] w-[15px] md:h-[20px] md:w-[20px] flex items-center justify-center `}
                   >
                     <h1 className={`text-[10px]`}>{totalItems}</h1>
                   </div>

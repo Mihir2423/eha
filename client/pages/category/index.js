@@ -11,7 +11,6 @@ const BestSellers = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const filterOption = useSelector((state) => state.filter);
-  console.log(filterOption);
   return (
     <Box>
       <Head>

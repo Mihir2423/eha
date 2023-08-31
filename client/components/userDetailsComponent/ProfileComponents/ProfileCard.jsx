@@ -17,13 +17,13 @@ const ProfileCard = ({ edit, setTakeInput, takeInput }) => {
           className={`flex justify-center items-center rounded-[100%] bg-[#1B9AC2] md:px-10 md:py-6`}
         >
           <h1 className={`text-white text-[64px]`}>
-            {userDetails ? userDetails.firstName[0] : profile ? profile[0] : "N"}
+            {userDetails ? userDetails.firstName[0] : "N"}
           </h1>
         </Box>
       </Box>
-      <h1 className={`text-[25px]`}>Hi, {userDetails ? userDetails.firstName : profile ? profile : "Not found"}</h1>
+      <h1 className={`text-[25px]`}>Hi, {userDetails ? userDetails.firstName : "Not found"}</h1>
       <p className={`text-[14px] text-[#464646]`}>
-        {userDetails ? userDetails.firstName : profile ? profile : "Not Found"}
+        {userDetails ? userDetails.firstName : "Not Found"}
       </p>
       {edit && !takeInput && (
         <Box

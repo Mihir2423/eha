@@ -22,7 +22,7 @@ const SortForm = () => {
   const dispatch = useDispatch();
 
   return (
-    <Box className={`w-[90%] px-4`}>
+    <Box className={`w-[90%] px-4 bg-[white]`}>
       <Box className={`flex flex-col gap-5`}>
         {sortOptions?.map((data, i) => (
           <Typography

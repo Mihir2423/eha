@@ -1,5 +1,5 @@
 
-import React, { useReducer } from "react";
+import React from "react";
 import { Alert, Box, Button, Snackbar, Typography, useMediaQuery} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -7,20 +7,13 @@ import * as Yup from "yup"; // Import Yup for validation
 import axios from "axios";
 import { nova_thai_bold, nova_thai } from "@/utilities/font";
 import { setDetails } from "@/redux/features/userSlice";
-import fetchDetails from "@/utilities/services";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import editIconSvg from "../../../assets/svg/editIconSvg.svg";
 import Image from "next/image";
 
 const InfoForm = ({ setTakeInput, takeInput, ProfileId }) => {
-  const router = useRouter();
-  const isMobile = useMediaQuery("(max-width: 768px)");
   const [loading, setLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    fetchDetails();
-  }, []);
 
   const userDetails = useSelector((state) => state.user.userDetails.details);
   const dispatch = useDispatch();

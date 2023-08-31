@@ -19,7 +19,7 @@ const FilterForm = () => {
     setValue(newValue);
   };
   return (
-    <Box>
+    <div className="bg-[white]" >
       <Box className={`border-b-[#C8C8C8] border-b-[2px] px-5`}>
         <Typography
           variant="h4"
@@ -60,7 +60,7 @@ const FilterForm = () => {
           />
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 };
 

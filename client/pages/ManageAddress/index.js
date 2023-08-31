@@ -1,17 +1,21 @@
 import ManageAddressPage from "@/components/userDetailsComponent/ManageAddressPage";
+import { setDetails } from "@/redux/features/userSlice";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { getSession } from "next-auth/react";
 import React from "react";
+import { useDispatch } from "react-redux";
 
-const Profile = ({ profile, id }) => {
+const ManageAddress = ({ profile, id }) => {
+  const dispatch = useDispatch();
+  dispatch(setDetails(profile));
   return (
     <Box className="mt-20">
       <ManageAddressPage profile={profile} profileId={id} />
     </Box>
   );
 };
-export default Profile;
+export default ManageAddress;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);

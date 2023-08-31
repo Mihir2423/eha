@@ -20,7 +20,7 @@ const ManageAddressPage = ({ profile, profileId }) => {
         <Box className={`flex flex-col gap-4`}>
           {!add ? (
             <>
-              <Address profile={profile} />
+              <Address />
               <AddNewAddressBtn add={add} setAdd={setAdd} />
             </>
           ) : (

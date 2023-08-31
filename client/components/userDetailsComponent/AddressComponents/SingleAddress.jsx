@@ -3,8 +3,10 @@ import React from "react";
 import { nova_thai } from "@/utilities/font";
 import sideDots from "../../../assets/svg/sideDots.svg";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
-const SingleAddress = ({ profile }) => {
+const SingleAddress = () => {
+  const profile = useSelector((state) => state.user.userDetails.details);
   return (
     <Box className={`flex justify-between px-8 pr-16 items-center mt-5`}>
       <Box className={`flex gap-5 flex-col`}>

@@ -1,12 +1,10 @@
 import HomePage from "@/components/HomePageComponents/HomePage";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getToken } from "@/redux/features/userSlice";
 import { useDispatch } from "react-redux";
 import Head from "next/head";
-import Loading from "@/utils/loading";
 
 const Home = ({ posts, filteredItems }) => {
-  console.log(process.env.NEXT_PUBLIC_NEXT_API_PUBLIC_URL);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,9 +20,7 @@ const Home = ({ posts, filteredItems }) => {
         <title>EHA Shivam Technologies | Dashboard</title>
         <meta name="description" content="Get all electronics products" />
       </Head>
-      <Suspense fallback={<Loading />}>
-        <HomePage posts={posts} laptops={filteredItems} />
-      </Suspense>
+      <HomePage posts={posts} laptops={filteredItems} />
     </>
   );
 };

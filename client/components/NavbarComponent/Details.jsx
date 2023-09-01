@@ -21,6 +21,7 @@ const Details = () => {
       style={{
         borderBottom: "2px solid rgba(217, 217, 217, 1)",
         padding: "0px 150px 5px 0",
+        paddingRight: isMobile ? "0px" : "150px",
       }}
     >
       <Box

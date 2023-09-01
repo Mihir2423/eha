@@ -18,7 +18,7 @@ const PersonalInformation = ({profile,ProfileId}) => {
   const userDetails = useSelector((state) => state?.user?.userDetails?.details);
 
   return (
-    <Grid   className="md:px-36 px-4 items-center justify-center md:justify-none">
+    <Grid   className="md:px-16 px-4 items-center justify-center md:justify-none">
     {
       isMobile ?
       <Grid item  md={8.6} xl={8.6} className=" ">

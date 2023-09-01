@@ -10,7 +10,7 @@ const ManageAddress = ({ profile, id }) => {
   const dispatch = useDispatch();
   dispatch(setDetails(profile));
   return (
-    <Box className="mt-20">
+    <Box className="mt-14">
       <ManageAddressPage profile={profile} profileId={id} />
     </Box>
   );

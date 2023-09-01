@@ -63,7 +63,7 @@ const AddressForm = ({ setAdd, profileId }) => {
   return (
     <center>
       <div
-        className={`md:w-[900px] relative  bg-white text-black px-[80px] py-5 rounded-2xl  shadow-2xl ${nova_thai.className} text-left `}
+        className={` md:w-[900px] relative  bg-white text-black px-[40px] md:px-[80px] py-5 rounded-2xl  shadow-2xl ${nova_thai.className} text-left `}
       >
         <h1 className="text-4xl font-bold mb-4">Delivery Address</h1>
         <hr />
@@ -88,8 +88,8 @@ const AddressForm = ({ setAdd, profileId }) => {
                   className="text-red-500 text-sm font-medium mt-1"
                 />
               </label>
-              <div className="flex justify-between">
-                <label className="block mb-6">
+              <div className="flex justify-between flex-col md:flex-row ">
+                <label className="block md:mb-6">
                   <span className="text-gray-700">Mobile Number</span>
                   <Field
                     name="telephone" // Change to "telephone"
@@ -103,7 +103,7 @@ const AddressForm = ({ setAdd, profileId }) => {
                     className="text-red-500 text-sm font-medium mt-1"
                   />
                 </label>
-                <label className="block mb-6">
+                <label className="block md:mb-6">
                   <span className="text-gray-700">Email</span>
                   <Field
                     name="email" // Change to "email"
@@ -118,7 +118,7 @@ const AddressForm = ({ setAdd, profileId }) => {
                   />
                 </label>
               </div>
-              <label className="block mb-6">
+              <label className="block md:mb-6">
                 <span className="text-gray-700">House No, Building Name*</span>
                 <Field
                   name="address1"
@@ -132,7 +132,7 @@ const AddressForm = ({ setAdd, profileId }) => {
                   className="text-red-500 text-sm font-medium mt-1"
                 />
               </label>
-              <label className="block mb-6">
+              <label className="block md:mb-6">
                 <span className="text-gray-700">Road Name, Area, Colony*</span>
                 <Field
                   name="address2"
@@ -146,8 +146,8 @@ const AddressForm = ({ setAdd, profileId }) => {
                   className="text-red-500 text-sm font-medium mt-1"
                 />
               </label>
-              <div className="flex justify-between">
-                <label className="block mb-6">
+              <div className="flex justify-between flex-col md:flex-row">
+                <label className="block md:mb-6">
                   <span className="text-gray-700">Landmark</span>
                   <Field
                     name="landmark" // Change to "landmark"
@@ -161,7 +161,7 @@ const AddressForm = ({ setAdd, profileId }) => {
                     className="text-red-500 text-sm font-medium mt-1"
                   />
                 </label>
-                <label className="block mb-6">
+                <label className="block md:mb-6">
                   <span className="text-gray-700">Pincode</span>
                   <Field
                     name="zip" // Change to "zip"

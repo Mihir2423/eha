@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const SingleAddress = () => {
   const profile = useSelector((state) => state.user.userDetails.details);
   return (
-    <Box className={`flex justify-between px-8 pr-16 items-center mt-5`}>
+    <Box className={`flex justify-between md:px-8 md:pr-16 items-center mt-5`}>
       <Box className={`flex gap-5 flex-col`}>
         <Box className={`flex items-center gap-16`}>
           <Typography

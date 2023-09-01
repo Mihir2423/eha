@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import SectionHeading from "../ProfileComponents/SectionHeading";
 import { nova_thai, nova_thai_bold } from "@/utilities/font";
@@ -12,12 +12,11 @@ const PasswordForm = () => {
     >
       <SectionHeading title={"SET PASSWORD"} />
       <Box className={`px-[22px]`}>
-        <Typography
-          variant="h4"
+        <h4
           className={`${nova_thai.className} text-[#8B8B8B] text-[16px] line-height-[25px] text-left`}
         >
           Set Your Password
-        </Typography>
+        </h4>
       </Box>
       <FormField title="Enter Password" />
       <FormField title="Re-Enter Password" />
@@ -31,12 +30,11 @@ const PasswordForm = () => {
             borderRadius: 7,
           }}
         >
-          <Typography
-            variant="p"
+          <h4
             className={`${nova_thai_bold.className} text-[14px] line-height-[22px] text-[#777777]`}
           >
             CANCEL
-          </Typography>
+          </h4>
         </Button>
         <Button
           variant="contained"
@@ -47,12 +45,11 @@ const PasswordForm = () => {
             borderRadius: 7,
           }}
         >
-          <Typography
-            variant="p"
+          <h4
             className={`${nova_thai_bold.className} text-[14px] line-height-[22px] text-[#FFFFFF]`}
           >
             UPDATE
-          </Typography>
+          </h4>
         </Button>
       </Box>
       

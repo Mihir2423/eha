@@ -7,7 +7,7 @@ import { getSession } from "next-auth/react";
 
 const Profile = ({profile}) => {
   return (
-    <Box className="mt-20">
+    <Box className="mt-14">
       <ChangePasswordPage profile={profile}  />
     </Box>
   );

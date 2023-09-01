@@ -38,7 +38,7 @@ const HomePage = ({ posts, laptops }) => {
     setSuccess(msg);
   }, [msg]);
   return (
-    <Box className="p-0">
+    <Box className="p-0 pb-4">
       <BannerSection />
       <DealsForYou posts={posts} />
       <BestSeller posts={laptops} />

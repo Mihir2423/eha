@@ -18,9 +18,9 @@ const DealsForYou = ({ posts }) => {
   return (
     <>
       {isMobile ? (
-        <Grid container spacing={2} padding={3}>
+        <Grid container spacing={2} padding={3} paddingY={{xs:0, md:3}}>
           <Grid item xs={12} md={12} xl={12}>
-            <ProductsSection posts={posts} />
+            <ProductsSection posts={posts} noView={true} />
           </Grid>
         </Grid>
       ) : (

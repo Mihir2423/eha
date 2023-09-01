@@ -1,17 +1,14 @@
 import MyOrdersPage from "@/components/userDetailsComponent/MyOrdersPage";
-import Loading from "@/utils/loading";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { getSession } from "next-auth/react";
-import React, { Suspense } from "react";
+import React from "react";
 
 const Profile = ({ profile }) => {
   return (
-    <Suspense fallback={<Loading/>}>
-    <Box className="mt-20">
+    <Box className="mt-12">
       <MyOrdersPage profile={profile} />
     </Box>
-    </Suspense>
   );
 };
 
